@@ -1,10 +1,12 @@
-/* Tüm linkler için: normalde yeşil, hoverda açık yeşil */
+/* Tüm linkler için: normalde yeşil, hoverda açık yeşil, altı çizgisiz */
 a, a:visited {
   color: #2b7a69 !important;
+  text-decoration: none !important;
   transition: color 0.2s;
 }
 a:hover, a:focus {
   color: #38a089 !important;
+  text-decoration: underline !important;
 }
 
 /* Butonlar için de aynı renkler */
