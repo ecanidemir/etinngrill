@@ -1,3 +1,8 @@
+/* lead içindeki strong etiketleri için daha koyu ve belirgin yazı */
+.lead strong {
+  font-weight: 800 !important;
+  color: #232323;
+}
 /* Menüdeki yazılar için büyük, koyu ve hover efekti */
 .navbar-nav .nav-link {
   font-size: 1.25rem;
