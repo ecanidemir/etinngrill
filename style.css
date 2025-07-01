@@ -1,3 +1,28 @@
+/* Tüm linkler için: normalde yeşil, hoverda açık yeşil */
+a, a:visited {
+  color: #2b7a69 !important;
+  transition: color 0.2s;
+}
+a:hover, a:focus {
+  color: #38a089 !important;
+}
+
+/* Butonlar için de aynı renkler */
+.btn-primary {
+  background-color: #2b7a69 !important;
+  border-color: #2b7a69 !important;
+  color: #fff !important;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #38a089 !important;
+  border-color: #38a089 !important;
+  color: #fff !important;
+}
+/* Link içindeki strong etiketleri link rengiyle görünür */
+a strong, a:visited strong {
+  color: inherit !important;
+  font-weight: 700;
+}
 /* lead içindeki strong etiketleri için daha koyu ve belirgin yazı */
 .lead strong {
   font-weight: 800 !important;
