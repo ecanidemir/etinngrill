@@ -122,15 +122,7 @@ section {
     -webkit-backdrop-filter: blur(10px);
 }
 
-.navbar.scrolled .custom-navbar-container {
-    margin-top: 1rem;
-    border-radius: 100vw;
-    width: auto;
-    max-width: 1140px;
-    box-shadow: 0 10px 30px rgba(27, 31, 10, 0.08);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
+
 
 .navbar-brand img {
     transition: height 0.3s;
