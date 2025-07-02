@@ -122,15 +122,11 @@ section {
     -webkit-backdrop-filter: blur(10px);
 }
 
-
-
 .navbar-brand img {
     transition: height 0.3s;
 }
 
-.navbar.scrolled .navbar-brand img {
-    height: 3.5rem !important;
-}
+
 
 @media (max-width: 767px) {
     .custom-navbar-container {
