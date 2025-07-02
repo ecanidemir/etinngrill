@@ -44,7 +44,7 @@ a strong, a:visited strong {
   background: none;
 }
 /* --- Google Font Import --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700&display=swap');
+
 
 /* --- General Body and Typography --- */
 body {
@@ -54,33 +54,29 @@ body {
     overflow-x: hidden;
 }
 
+
 h1, h2, h3, h4, h5, h6, .display-1, .display-2, .display-5 {
-    font-weight: 700;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 0.75em;
 }
 
-a {
-    color: #2b7a69;
-    text-decoration: none;
-}
 
-a:hover {
-    color: #38a089;
-}
 
 .lead {
-    font-size: 1.4rem;
-    line-height: 1.5;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
 }
 
-/* --- Section Styling --- */
+
 section {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
-
 .hero-section {
-    padding-top: 12rem;
-    padding-bottom: 6rem;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
 }
 
 /* Contact Section Height Adjustment */
@@ -91,17 +87,17 @@ section {
 
 
 @media (max-width: 991px) {
-    .hero-section {
-        padding-top: 8rem;
-    }
-    section {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-    }
-    .contact-section {
-        min-height: auto; /* Disable min-height on smaller screens */
-        padding: 3rem 0;
-    }
+  .hero-section {
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+  }
+  section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .contact-section {
+    padding: 2rem 0;
+  }
 }
 
 /* --- Navbar Styling --- */

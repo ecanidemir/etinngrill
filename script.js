@@ -45,20 +45,10 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if(targetElement) {
-                 targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
+    document.addEventListener('DOMContentLoaded', function () {
+        // Galeri görselleri için lazy loading zaten HTML'de var, ekstra JS gerekmez
+        // Modal açıldığında carousel içeriğini dinamik oluşturmak için kod eklenebilir
+        // Hız ve SEO için gereksiz kodlar kaldırıldı
     });
 
 });
