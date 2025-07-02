@@ -129,10 +129,25 @@ section {
 
 
 @media (max-width: 767px) {
-    .custom-navbar-container {
-        width: 95%;
-        height: auto !important;
-    }
+  .custom-navbar-container {
+    height: 56px !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+  }
+  .navbar-collapse {
+    background: rgba(255,255,255,0.96);
+    border-radius: 0 !important;
+    box-shadow: 0 4px 16px rgba(27,31,10,0.08);
+    margin-top: 0.5rem;
+    padding: 1rem 0.5rem;
+  }
+  .navbar-nav .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    border-bottom: none;
+  }
 }
 
 /* --- Buttons --- */
