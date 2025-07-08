@@ -215,6 +215,27 @@ section {
 }
 
 @media (max-width: 767px) {
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    line-height: 1.18;
+  }
+  .lead, p, .features-section p, .gallery-section p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+  }
+  .btn, .btn-primary {
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    border-width: 2px;
+  }
+  .gallery-item {
+    object-fit: cover;
+    min-height: 160px;
+    aspect-ratio: 1/1;
+  }
   .hero-section {
     padding-top: 6.5rem;
     padding-bottom: 1.5rem;
@@ -267,6 +288,66 @@ section {
     display: flex;
     justify-content: flex-start;
   }
+  .features-section,
+  .gallery-section {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+  }
+  .features-section .row,
+  .gallery-section .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .features-section .col,
+  .gallery-section .col {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .features-section .btn,
+  .gallery-section .btn {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    padding: 1rem 0.5rem;
+    font-size: 1.05rem;
+  }
+  .features-section p,
+  .gallery-section p {
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+  }
+  .footer-section {
+    padding: 2rem 0.5rem 1.5rem 0.5rem;
+    text-align: center;
+  }
+  .footer-section .social-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 0.7rem;
+    margin-bottom: 1.2rem;
+  }
+  .footer-section .social-row .soc-item {
+    margin: 0 0.2rem 0.7rem 0.2rem;
+    width: 40px;
+    height: 40px;
+  }
+  .footer-section .copyright {
+    font-size: 0.95rem;
+    margin-top: 1rem;
+  }
+  .btn-primary {
+    width: 100%;
+    padding: 1rem 0.5rem;
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
+  .lead {
+    font-size: 0.98rem;
+    margin-bottom: 1.1rem;
+  }
 }
 
 /* --- Buttons --- */
@@ -280,10 +361,11 @@ section {
 }
 
 .btn-primary:hover {
-    background-color: #38a089 !important;
-    border-color: #38a089 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background-color: #1e5e4e !important;
+    border-color: #1e5e4e !important;
+    color: #fff !important;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 18px rgba(43,122,105,0.18);
 }
 
 /* --- Custom Element Styling --- */
@@ -355,8 +437,9 @@ section {
 }
 
 .gallery-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.13);
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(43,122,105,0.18);
+    filter: brightness(0.95) contrast(1.15);
 }
 
 /* --- Gallery Modal --- */
