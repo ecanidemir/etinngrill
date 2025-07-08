@@ -56,45 +56,45 @@ body {
 
 
 h1, .display-1 {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   font-weight: 800;
   line-height: 1.15;
-  margin-bottom: 0.75em;
-}
-h2, .display-2, .display-5 {
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.18;
   margin-bottom: 0.7em;
 }
-h3 {
-  font-size: 1.5rem;
+h2, .display-2, .display-5 {
+  font-size: 1.6rem;
   font-weight: 700;
+  line-height: 1.18;
   margin-bottom: 0.6em;
 }
-h4, h5, h6 {
-  font-size: 1.15rem;
+h3 {
+  font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 0.5em;
+}
+h4, h5, h6 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.4em;
 }
 }
 
 
 
 .lead {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.6;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1rem;
 }
 
 
 section {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 .hero-section {
-  padding-top: 8rem;
-  padding-bottom: 4rem;
+  padding-top: 7rem;
+  padding-bottom: 3rem;
 }
 
 /* Contact Section Height Adjustment */
@@ -106,36 +106,36 @@ section {
 
 @media (max-width: 991px) {
   h1, .display-1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   h2, .display-2, .display-5 {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
   }
   .hero-section {
     padding-top: 6.5rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 1.2rem;
   }
   section {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
   }
   .navbar-brand img {
-    height: 2.1rem;
-    max-width: 100px;
+    height: 1.5rem;
+    max-width: 80px;
   }
   .navbar-nav .nav-link {
-    font-size: 1rem;
-    padding: 0.4rem 0.7rem;
+    font-size: 0.95rem;
+    padding: 0.3rem 0.5rem;
   }
   .gallery-item {
-    border-radius: 0.8rem;
+    border-radius: 0.7rem;
   }
   .video-wrapper, .map-wrapper {
     max-width: 100vw;
-    padding-bottom: 56.25%;
+    padding-bottom: 180%;
   }
   .map-wrapper {
-    min-height: 160px;
+    min-height: 120px;
   }
 }
 
@@ -297,8 +297,8 @@ section {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 56.25%; /* 16:9 oranı */
-    max-width: 600px;
+    padding-bottom: 180%; /* 480x864 oranı: 0.555, yani 180% dikey */
+    max-width: 480px;
     margin: 0 auto;
 }
 
@@ -325,41 +325,38 @@ section {
     height: 100%;
 }
 
-.feature-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.feature-list li {
-    position: relative;
-    padding-left: 1.8rem;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-}
-
-.feature-list li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: #2b7a69;
-    font-weight: bold;
-}
-
-
-/* --- Gallery --- */
-.gallery-item {
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 1.2rem;
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  .hero-section {
+    padding-top: 6.5rem;
+    padding-bottom: 1rem;
+  }
+  .navbar-nav .nav-link {
+    width: 100%;
+    padding: 0.5rem 0.5rem;
+    font-size: 0.92rem;
+    border-radius: 0.6rem;
+    text-align: left;
+  }
+  .gallery-item {
+    border-radius: 0.5rem;
+  }
+  .video-wrapper, .map-wrapper {
+    max-width: 100vw;
+    padding-bottom: 180%;
+  }
+  .map-wrapper {
+    min-height: 80px;
+  }
+  .navbar-buttons {
+    width: 100%;
+    margin: 1rem 0 0 0;
+    display: flex;
+    justify-content: flex-start;
+  }
 }
 
 .gallery-item:hover {
-    transform: scale(1.04);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+    transform: scale(1.03);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.13);
 }
 
 /* --- Gallery Modal --- */
@@ -398,11 +395,11 @@ section {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    margin: 0 0.5rem;
-    width: 50px; /* Circle width */
-    height: 50px; /* Circle height */
+    margin: 0 0.3rem 0.7rem 0.3rem;
+    width: 44px;
+    height: 44px;
     background-color: #ffffff;
-    border-radius: 50%; /* Makes it a circle */
+    border-radius: 50%;
     transition: all 0.3s;
 }
 
