@@ -45,10 +45,4 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        // Galeri görselleri için lazy loading zaten HTML'de var, ekstra JS gerekmez
-        // Modal açıldığında carousel içeriğini dinamik oluşturmak için kod eklenebilir
-        // Hız ve SEO için gereksiz kodlar kaldırıldı
-    });
-
 });
