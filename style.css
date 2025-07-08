@@ -112,7 +112,7 @@ section {
     font-size: 1.4rem;
   }
   .hero-section {
-    padding-top: 3.5rem;
+    padding-top: 6.5rem;
     padding-bottom: 1.5rem;
   }
   section {
@@ -215,6 +215,10 @@ section {
 }
 
 @media (max-width: 767px) {
+  .hero-section {
+    padding-top: 6.5rem;
+    padding-bottom: 1.5rem;
+  }
   .custom-navbar-container {
     max-width: 100vw;
     width: 100vw;
