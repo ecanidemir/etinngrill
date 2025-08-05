@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping costs outside Türkiye</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #e63946;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #e63946;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #d62828;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 5px solid #e63946;
+            display: none;
+        }
+        .result h3 {
+            margin-top: 0;
+            color: #e63946;
+            font-size: 22px;
+        }
+        .result p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .result .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e63946;
+        }
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f4f8;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #e63946;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .date-info {
+            text-align: right;
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+        }
+        .currency-result {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        .currency-box {
+            flex: 1;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 0 5px;
+            text-align: center;
+        }
+        .currency-box:first-child {
+            margin-left: 0;
+        }
+        .currency-box:last-child {
+            margin-right: 0;
+        }
+        .currency-box h4 {
+            margin-top: 0;
+            color: #333;
+            font-size: 16px;
+        }
+        .currency-box .price {
+            font-size: 22px;
+            margin-top: 10px;
+        }
+        .calculation-details {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .calculation-details h4 {
+            margin-top: 0;
+            color: #333;
+        }
+        .calculation-details p {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Shipping costs outside Türkiye</h1>
+        
+        <div class="form-group">
+            <label for="ulke">Select Country:</label>
+            <select id="ulke">
+                <option value="">-- Select Country --</option>
+                <option value="AFGANISTAN">Afganistan</option>
+                <option value="ALMANYA">Almanya</option>
+                <option value="AMERIKA">Amerika Birleşik Devletleri</option>
+                <option value="ANDORRA">Andorra</option>
+                <option value="ANGOLA">Angola</option>
+                <option value="ANGUILLA">Anguilla</option>
+                <option value="ANTIGUA_BARBUDA">Antigua ve Barbuda</option>
+                <option value="ARJANTIN">Arjantin</option>
+                <option value="ARNAVUTLUK">Arnavutluk</option>
+                <option value="ARUBA">Aruba</option>
+                <option value="AVUSTURYA">Avusturya</option>
+                <option value="AVUSTRALYA">Avustralya</option>
+                <option value="AZERBAYCAN">Azerbaycan</option>
+                <option value="BAHAMALAR">Bahamalar</option>
+                <option value="BAHREYN">Bahreyn</option>
+                <option value="BANGLADES">Bangladeş</option>
+                <option value="BARBADOS">Barbados</option>
+                <option value="BELARUS">Belarus</option>
+                <option value="BELCIKA">Belçika</option>
+                <option value="BELIZE">Belize</option>
+                <option value="BENIN">Benin</option>
+                <option value="BERMUDA">Bermuda</option>
+                <option value="BOSNA_HERSEK">Bosna Hersek</option>
+                <option value="BOTSVANA">Botsvana</option>
+                <option value="BREZILYA">Brezilya</option>
+                <option value="BRUNEI">Brunei</option>
+                <option value="BULGARISTAN">Bulgaristan</option>
+                <option value="BURKINA_FASO">Burkina Faso</option>
+                <option value="BURUNDI">Burundi</option>
+                <option value="BUTAN">Butan</option>
+                <option value="CEZAYIR">Cezayir</option>
+                <option value="CEBELITARIK">Cebelitarık</option>
+                <option value="COCOS_ADALARI">Cocos Adaları</option>
+                <option value="CIBUTI">Cibuti</option>
+                <option value="CEKYA">Çekya</option>
+                <option value="CIN_HALK_CUMHURIYETI">Çin Halk Cumhuriyeti</option>
+                <option value="DANIMARKA">Danimarka</option>
+                <option value="DOMINIK">Dominik</option>
+                <option value="DOMINIKA_CUMHURIYETI">Dominika Cumhuriyeti</option>
+                <option value="EKVATOR">Ekvator</option>
+                <option value="EKVATOR_GINESI">Ekvator Ginesi</option>
+                <option value="EL_SALVADOR">El Salvador</option>
+                <option value="ENDONEZYA">Endonezya</option>
+                <option value="ERITRE">Eritre</option>
+                <option value="ERMENISTAN">Ermenistan</option>
+                <option value="ESTONYA">Estonya</option>
+                <option value="ESVATINI">Esvatini</option>
+                <option value="ETYOPYA">Etiyopya</option>
+                <option value="FAS">Fas</option>
+                <option value="FIJI">Fiji</option>
+                <option value="FILIPINLER">Filipinler</option>
+                <option value="FILDISI_SAHILI">Fildişi Sahili</option>
+                <option value="FINLANDIYA">Finlandiya</option>
+                <option value="FRANSA">Fransa</option>
+                <option value="FRANSIZ_GUYANASI">Fransız Guyanası</option>
+                <option value="FRANSIZ_POLINEZYASI">Fransız Polinezyası</option>
+                <option value="GABON">Gabon</option>
+                <option value="GAMBİYA">Gambiya</option>
+                <option value="GANA">Gana</option>
+                <option value="GINE">Gine</option>
+                <option value="GINE_BISSAU">Gine Bissau</option>
+                <option value="GRONLAND">Grönland</option>
+                <option value="GUADELOUPE">Guadeloupe</option>
+                <option value="GUAM">Guam</option>
+                <option value="GUATEMALA">Guatemala</option>
+                <option value="GUNEY_AFRIKA">Güney Afrika</option>
+                <option value="GUNEY_KORE">Güney Kore</option>
+                <option value="GURCISTAN">Gürcistan</option>
+                <option value="GUYANA">Guyana</option>
+                <option value="HAITI">Haiti</option>
+                <option value="HINDISTAN">Hindistan</option>
+                <option value="HIRVATISTAN">Hırvatistan</option>
+                <option value="HOLLANDA">Hollanda</option>
+                <option value="HONDURAS">Honduras</option>
+                <option value="HONG_KONG">Hong Kong</option>
+                <option value="INGILTERE">İngiltere</option>
+                <option value="IRAK">Irak</option>
+                <option value="IRLANDA">İrlanda</option>
+                <option value="ISPANYA">İspanya</option>
+                <option value="ISRAIL">İsrail</option>
+                <option value="ISVEC">İsveç</option>
+                <option value="ISVICRE">İsviçre</option>
+                <option value="ITALYA">İtalya</option>
+                <option value="IZLANDA">İzlanda</option>
+                <option value="JAMAIKA">Jamaika</option>
+                <option value="JAPONYA">Japonya</option>
+                <option value="KAMBOCYA">Kamboçya</option>
+                <option value="KAMERUN">Kamerun</option>
+                <option value="KANADA">Kanada</option>
+                <option value="KARADAG">Karadağ</option>
+                <option value="KATAR">Katar</option>
+                <option value="KENYA">Kenya</option>
+                <option value="KIBRIS_RUM_KESIMI">Kıbrıs Rum Kesimi</option>
+                <option value="KIRGIZISTAN">Kırgızistan</option>
+                <option value="KOLOMBIYA">Kolombiya</option>
+                <option value="KOMORLAR">Komorlar</option>
+                <option value="KONGO">Kongo</option>
+                <option value="KONGO_DEMOKRATIK_CUMHURIYETI">Kongo Demokratik Cumhuriyeti</option>
+                <option value="KOSTA_RIKA">Kosta Rika</option>
+                <option value="KUBE">Küba</option>
+                <option value="KUVEYT">Kuveyt</option>
+                <option value="KUZEY_KIBRIS">Kuzey Kıbrıs Türk Cumhuriyeti</option>
+                <option value="KUZEY_KORE">Kuzey Kore</option>
+                <option value="LAOS">Laos</option>
+                <option value="LESOTHO">Lesotho</option>
+                <option value="LETONYA">Letonya</option>
+                <option value="LIBERYA">Liberya</option>
+                <option value="LITVANYA">Litvanya</option>
+                <option value="LUBNAN">Lübnan</option>
+                <option value="LUKSEMBURG">Lüksemburg</option>
+                <option value="MACARISTAN">Macaristan</option>
+                <option value="MADAGASKAR">Madagaskar</option>
+                <option value="MAKAO">Makao</option>
+                <option value="MAKEDONYA">Makedonya</option>
+                <option value="MALAVI">Malavi</option>
+                <option value="MALEZYA">Malezya</option>
+                <option value="MALI">Mali</option>
+                <option value="MALTA">Malta</option>
+                <option value="MAN_ADASI">Man Adası</option>
+                <option value="MARTINIK">Martinik</option>
+                <option value="MAURITIUS">Mauritius</option>
+                <option value="MAYOTTE">Mayotte</option>
+                <option value="MEKSIKA">Meksika</option>
+                <option value="MIKRONEZYA">Mikronezya</option>
+                <option value="MISIR">Mısır</option>
+                <option value="MOGOLISTAN">Moğolistan</option>
+                <option value="MOLDAVYA">Moldavya</option>
+                <option value="MONAKO">Monako</option>
+                <option value="MONTENEGRO">Karadağ</option>
+                <option value="MORITANYA">Moritanya</option>
+                <option value="MOZAMBIK">Mozambik</option>
+                <option value="MYANMAR">Myanmar</option>
+                <option value="NAMIBYA">Namibya</option>
+                <option value="NEPAL">Nepal</option>
+                <option value="NIJER">Nijer</option>
+                <option value="NIJERYA">Nijerya</option>
+                <option value="NIKARAGUA">Nikaragua</option>
+                <option value="NORVEC">Norveç</option>
+                <option value="ORTA_AFRIKA_CUMHURIYETI">Orta Afrika Cumhuriyeti</option>
+                <option value="OZBEKISTAN">Özbekistan</option>
+                <option value="PAKISTAN">Pakistan</option>
+                <option value="PALAU">Palau</option>
+                <option value="PANAMA">Panama</option>
+                <option value="PAPUA_YENI_GINE">Papua Yeni Gine</option>
+                <option value="PARAGUAY">Paraguay</option>
+                <option value="PERU">Peru</option>
+                <option value="POLONYA">Polonya</option>
+                <option value="PORTEKIZ">Portekiz</option>
+                <option value="PUERTO_RIKO">Porto Riko</option>
+                <option value="REUNION">Reunion</option>
+                <option value="ROMANYA">Romanya</option>
+                <option value="RUANDA">Ruanda</option>
+                <option value="RUSYA">Rusya</option>
+                <option value="SAMOA">Samoa</option>
+                <option value="SENEGAL">Senegal</option>
+                <option value="SEYSEL_ADALARI">Seyşel Adaları</option>
+                <option value="SIERRA_LEONE">Sierra Leone</option>
+                <option value="SINGAPUR">Singapur</option>
+                <option value="SIRBISTAN">Sırbistan</option>
+                <option value="SLOVAKYA">Slovakya</option>
+                <option value="SLOVENYA">Slovenya</option>
+                <option value="SOMALI">Somali</option>
+                <option value="SRI_LANKA">Sri Lanka</option>
+                <option value="ST_KITTS_VE_NEVIS">St. Kitts ve Nevis</option>
+                <option value="ST_LUCIA">St. Lucia</option>
+                <option value="ST_VINCENT_VE_GRENADINLER">St. Vincent ve Grenadinler</option>
+                <option value="SUDAN">Sudan</option>
+                <option value="SURINAM">Surinam</option>
+                <option value="SURIYE">Suriye</option>
+                <option value="SUUD_ARABISTAN">Suudi Arabistan</option>
+                <option value="TACIKISTAN">Tacikistan</option>
+                <option value="TANZANYA">Tanzanya</option>
+                <option value="TAYLAND">Tayland</option>
+                <option value="TAYVAN">Tayvan</option>
+                <option value="TOGO">Togo</option>
+                <option value="TOKELAU">Tokelau</option>
+                <option value="TONGA">Tonga</option>
+                <option value="TRINIDAD_VE_TOBAGO">Trinidad ve Tobago</option>
+                <option value="TUNUS">Tunus</option>
+                <option value="TURKMENISTAN">Türkmenistan</option>
+                <option value="TUVALU">Tuvalu</option>
+                <option value="UGANDA">Uganda</option>
+                <option value="UKRAYNA">Ukrayna</option>
+                <option value="UMMAN">Umman</option>
+                <option value="URDUN">Ürdün</option>
+                <option value="URUGUAY">Uruguay</option>
+                <option value="VANUATU">Vanuatu</option>
+                <option value="VATIKAN">Vatikan</option>
+                <option value="VENEZUELA">Venezuela</option>
+                <option value="VIETNAM">Vietnam</option>
+                <option value="YEMEN">Yemen</option>
+                <option value="YENI_ZELANDA">Yeni Zelanda</option>
+                <option value="YUNANISTAN">Yunanistan</option>
+                <option value="ZAMBIYA">Zambiya</option>
+                <option value="ZIMBABVE">Zimbabve</option>
+            </select>
+        </div>
+        
+        <button id="hesapla">Calculate</button>
+        
+        <div id="loading" class="loading">
+            <div class="loading-spinner"></div>
+            <p>Calculating...</p>
+        </div>
+        
+        <div id="sonuc" class="result">
+            
+            <div class="currency-result">
+                <div class="currency-box">
+                    <h4>Türk Lirası (TL)</h4>
+                    <div class="price" id="tl_sonuc"></div>
+                </div>
+                <div class="currency-box">
+                    <h4>Euro (EUR)</h4>
+                    <div class="price" id="eur_sonuc"></div>
+                </div>
+                <div class="currency-box">
+                    <h4>Amerikan Doları (USD)</h4>
+                    <div class="price" id="usd_sonuc"></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        // Ülke fiyat verileri (ulkeler_sdr.xlsx tablosundan alınan verilere göre)
+        const ulkeFiyatlari = {
+            "AFGANISTAN": { ilk1kg: 22.98, sonrakiHer1kg: 6.97 },
+            "ALMANYA": { ilk1kg: 13.82, sonrakiHer1kg: 2.52 },
+            "AMERIKA": { ilk1kg: 23.48, sonrakiHer1kg: 11.95 },
+            "ANDORRA": { ilk1kg: 20.32, sonrakiHer1kg: 4.37 },
+            "ANGOLA": { ilk1kg: 24.92, sonrakiHer1kg: 9.71 },
+            "ANGUILLA": { ilk1kg: 22.70, sonrakiHer1kg: 11.66 },
+            "ANTIGUA_BARBUDA": { ilk1kg: 23.77, sonrakiHer1kg: 9.98 },
+            "ARJANTIN": { ilk1kg: 25.94, sonrakiHer1kg: 13.55 },
+            "ARNAVUTLUK": { ilk1kg: 14.71, sonrakiHer1kg: 2.04 },
+            "ARUBA": { ilk1kg: 24.79, sonrakiHer1kg: 11.42 },
+            "AVUSTURYA": { ilk1kg: 17.15, sonrakiHer1kg: 2.55 },
+            "AVUSTRALYA": { ilk1kg: 36.48, sonrakiHer1kg: 23.72 },
+            "AZERBAYCAN": { ilk1kg: 8.23, sonrakiHer1kg: 3.04 },
+            "BAHAMALAR": { ilk1kg: 24.77, sonrakiHer1kg: 10.54 },
+            "BAHREYN": { ilk1kg: 14.13, sonrakiHer1kg: 4.64 },
+            "BANGLADES": { ilk1kg: 15.79, sonrakiHer1kg: 7.72 },
+            "BARBADOS": { ilk1kg: 25.13, sonrakiHer1kg: 10.30 },
+            "BELARUS": { ilk1kg: 13.84, sonrakiHer1kg: 6.02 },
+            "BELCIKA": { ilk1kg: 21.81, sonrakiHer1kg: 3.42 },
+            "BELIZE": { ilk1kg: 30.11, sonrakiHer1kg: 11.99 },
+            "BENIN": { ilk1kg: 23.26, sonrakiHer1kg: 7.80 },
+            "BERMUDA": { ilk1kg: 27.51, sonrakiHer1kg: 9.40 },
+            "BOSNA_HERSEK": { ilk1kg: 14.72, sonrakiHer1kg: 2.77 },
+            "BOTSVANA": { ilk1kg: 23.85, sonrakiHer1kg: 10.15 },
+            "BREZILYA": { ilk1kg: 28.14, sonrakiHer1kg: 13.62 },
+            "BRUNEI": { ilk1kg: 18.26, sonrakiHer1kg: 9.30 },
+            "BULGARISTAN": { ilk1kg: 11.82, sonrakiHer1kg: 1.96 },
+            "BURKINA_FASO": { ilk1kg: 24.87, sonrakiHer1kg: 8.48 },
+            "BURUNDI": { ilk1kg: 31.94, sonrakiHer1kg: 9.89 },
+            "BUTAN": { ilk1kg: 21.71, sonrakiHer1kg: 6.92 },
+            "CEZAYIR": { ilk1kg: 13.94, sonrakiHer1kg: 3.77 },
+            "CEBELITARIK": { ilk1kg: 14.59, sonrakiHer1kg: 6.32 },
+            "COCOS_ADALARI": { ilk1kg: 23.38, sonrakiHer1kg: 4.76 },
+            "CIBUTI": { ilk1kg: 15.33, sonrakiHer1kg: 6.02 },
+            "CEKYA": { ilk1kg: 12.68, sonrakiHer1kg: 2.87 },
+            "CIN_HALK_CUMHURIYETI": { ilk1kg: 18.63, sonrakiHer1kg: 8.36 },
+            "DANIMARKA": { ilk1kg: 20.98, sonrakiHer1kg: 4.78 },
+            "DOMINIK": { ilk1kg: 21.39, sonrakiHer1kg: 10.18 },
+            "DOMINIKA_CUMHURIYETI": { ilk1kg: 24.92, sonrakiHer1kg: 10.54 },
+            "EKVATOR": { ilk1kg: 18.87, sonrakiHer1kg: 7.21 },
+            "EKVATOR_GINESI": { ilk1kg: 21.71, sonrakiHer1kg: 7.94 },
+            "EL_SALVADOR": { ilk1kg: 28.71, sonrakiHer1kg: 12.78 },
+            "ENDONEZYA": { ilk1kg: 21.68, sonrakiHer1kg: 10.54 },
+            "ERITRE": { ilk1kg: 19.31, sonrakiHer1kg: 6.73 },
+            "ERMENISTAN": { ilk1kg: 28.05, sonrakiHer1kg: 8.86 },
+            "ESTONYA": { ilk1kg: 19.41, sonrakiHer1kg: 6.15 },
+            "ESVATINI": { ilk1kg: 17.94, sonrakiHer1kg: 9.76 },
+            "ETYOPYA": { ilk1kg: 14.18, sonrakiHer1kg: 7.31 },
+            "FAS": { ilk1kg: 15.90, sonrakiHer1kg: 4.91 },
+            "FIJI": { ilk1kg: 21.45, sonrakiHer1kg: 11.70 },
+            "FILIPINLER": { ilk1kg: 15.42, sonrakiHer1kg: 8.67 },
+            "FILDISI_SAHILI": { ilk1kg: 27.25, sonrakiHer1kg: 11.49 },
+            "FINLANDIYA": { ilk1kg: 25.08, sonrakiHer1kg: 5.93 },
+            "FRANSA": { ilk1kg: 20.32, sonrakiHer1kg: 4.37 },
+            "FRANSIZ_GUYANASI": { ilk1kg: 31.45, sonrakiHer1kg: 10.29 },
+            "FRANSIZ_POLINEZYASI": { ilk1kg: 40.63, sonrakiHer1kg: 19.96 },
+            "GABON": { ilk1kg: 25.99, sonrakiHer1kg: 8.69 },
+            "GAMBİYA": { ilk1kg: 25.62, sonrakiHer1kg: 7.24 },
+            "GANA": { ilk1kg: 24.67, sonrakiHer1kg: 7.33 },
+            "GINE": { ilk1kg: 24.33, sonrakiHer1kg: 7.99 },
+            "GINE_BISSAU": { ilk1kg: 28.65, sonrakiHer1kg: 7.40 },
+            "GRONLAND": { ilk1kg: 42.89, sonrakiHer1kg: 9.54 },
+            "GUADELOUPE": { ilk1kg: 31.54, sonrakiHer1kg: 10.35 },
+            "GUAM": { ilk1kg: 18.58, sonrakiHer1kg: 8.70 },
+            "GUATEMALA": { ilk1kg: 27.01, sonrakiHer1kg: 12.89 },
+            "GUNEY_AFRIKA": { ilk1kg: 25.02, sonrakiHer1kg: 12.09 },
+            "GUNEY_KORE": { ilk1kg: 20.15, sonrakiHer1kg: 7.85 },
+            "GURCISTAN": { ilk1kg: 20.33, sonrakiHer1kg: 4.73 },
+            "GUYANA": { ilk1kg: 29.10, sonrakiHer1kg: 11.22 },
+            "HAITI": { ilk1kg: 25.84, sonrakiHer1kg: 11.29 },
+            "HINDISTAN": { ilk1kg: 21.69, sonrakiHer1kg: 7.79 },
+            "HIRVATISTAN": { ilk1kg: 11.68, sonrakiHer1kg: 2.55 },
+            "HOLLANDA": { ilk1kg: 16.32, sonrakiHer1kg: 4.44 },
+            "HONDURAS": { ilk1kg: 27.63, sonrakiHer1kg: 12.60 },
+            "HONG_KONG": { ilk1kg: 23.87, sonrakiHer1kg: 7.82 },
+            "INGILTERE": { ilk1kg: 18.34, sonrakiHer1kg: 7.62 },
+            "IRAK": { ilk1kg: 11.82, sonrakiHer1kg: 3.45 },
+            "IRLANDA": { ilk1kg: 16.95, sonrakiHer1kg: 5.76 },
+            "ISPANYA": { ilk1kg: 20.15, sonrakiHer1kg: 5.90 },
+            "ISRAIL": { ilk1kg: 26.11, sonrakiHer1kg: 12.24 },
+            "ISVEC": { ilk1kg: 26.59, sonrakiHer1kg: 6.85 },
+            "ISVICRE": { ilk1kg: 17.36, sonrakiHer1kg: 4.68 },
+            "ITALYA": { ilk1kg: 17.97, sonrakiHer1kg: 4.86 },
+            "IZLANDA": { ilk1kg: 29.85, sonrakiHer1kg: 11.29 },
+            "JAMAIKA": { ilk1kg: 29.17, sonrakiHer1kg: 11.87 },
+            "JAPONYA": { ilk1kg: 21.06, sonrakiHer1kg: 9.18 },
+            "KAMBOCYA": { ilk1kg: 11.65, sonrakiHer1kg: 3.91 },
+            "KAMERUN": { ilk1kg: 24.24, sonrakiHer1kg: 13.45 },
+            "KANADA": { ilk1kg: 25.45, sonrakiHer1kg: 11.29 },
+            "KARADAG": { ilk1kg: 16.24, sonrakiHer1kg: 2.16 },
+            "KATAR": { ilk1kg: 12.65, sonrakiHer1kg: 3.67 },
+            "KENYA": { ilk1kg: 16.24, sonrakiHer1kg: 6.32 },
+            "KIBRIS_RUM_KESIMI": { ilk1kg: 19.87, sonrakiHer1kg: 5.73 },
+            "KIRGIZISTAN": { ilk1kg: 7.40, sonrakiHer1kg: 4.52 },
+            "KOLOMBIYA": { ilk1kg: 24.31, sonrakiHer1kg: 11.73 },
+            "KOMORLAR": { ilk1kg: 26.25, sonrakiHer1kg: 10.66 },
+            "KONGO": { ilk1kg: 24.36, sonrakiHer1kg: 13.45 },
+            "KONGO_DEMOKRATIK_CUMHURIYETI": { ilk1kg: 27.95, sonrakiHer1kg: 9.38 },
+            "KOSTA_RIKA": { ilk1kg: 21.54, sonrakiHer1kg: 7.97 },
+            "KUBE": { ilk1kg: 26.45, sonrakiHer1kg: 11.66 },
+            "KUVEYT": { ilk1kg: 13.45, sonrakiHer1kg: 4.93 },
+            "KUZEY_KIBRIS": { ilk1kg: 4.71, sonrakiHer1kg: 1.39 },
+            "KUZEY_KORE": { ilk1kg: 21.62, sonrakiHer1kg: 10.42 },
+            "LAOS": { ilk1kg: 29.41, sonrakiHer1kg: 12.84 },
+            "LESOTHO": { ilk1kg: 20.91, sonrakiHer1kg: 10.01 },
+            "LETONYA": { ilk1kg: 15.06, sonrakiHer1kg: 6.51 },
+            "LIBERYA": { ilk1kg: 23.36, sonrakiHer1kg: 8.08 },
+            "LITVANYA": { ilk1kg: 18.73, sonrakiHer1kg: 5.87 },
+            "LUBNAN": { ilk1kg: 12.19, sonrakiHer1kg: 2.36 },
+            "LUKSEMBURG": { ilk1kg: 16.61, sonrakiHer1kg: 3.71 },
+            "MACARISTAN": { ilk1kg: 18.07, sonrakiHer1kg: 3.18 },
+            "MADAGASKAR": { ilk1kg: 21.68, sonrakiHer1kg: 8.59 },
+            "MAKAO": { ilk1kg: 20.81, sonrakiHer1kg: 4.74 },
+            "MAKEDONYA": { ilk1kg: 12.77, sonrakiHer1kg: 2.01 },
+            "MALAVI": { ilk1kg: 21.35, sonrakiHer1kg: 12.48 },
+            "MALEZYA": { ilk1kg: 17.34, sonrakiHer1kg: 6.68 },
+            "MALI": { ilk1kg: 22.95, sonrakiHer1kg: 7.23 },
+            "MALTA": { ilk1kg: 20.35, sonrakiHer1kg: 8.16 },
+            "MAN_ADASI": { ilk1kg: 15.47, sonrakiHer1kg: 4.74 },
+            "MARTINIK": { ilk1kg: 31.54, sonrakiHer1kg: 10.35 },
+            "MAURITIUS": { ilk1kg: 21.17, sonrakiHer1kg: 8.06 },
+            "MAYOTTE": { ilk1kg: 23.10, sonrakiHer1kg: 14.86 },
+            "MEKSIKA": { ilk1kg: 19.60, sonrakiHer1kg: 10.64 },
+            "MIKRONEZYA": { ilk1kg: 21.35, sonrakiHer1kg: 12.48 },
+            "MISIR": { ilk1kg: 13.74, sonrakiHer1kg: 5.24 },
+            "MOGOLISTAN": { ilk1kg: 19.47, sonrakiHer1kg: 7.46 },
+            "MOLDAVYA": { ilk1kg: 15.56, sonrakiHer1kg: 3.21 },
+            "MONAKO": { ilk1kg: 20.32, sonrakiHer1kg: 4.37 },
+            "MONTENEGRO": { ilk1kg: 15.98, sonrakiHer1kg: 1.90 },
+            "MORITANYA": { ilk1kg: 22.41, sonrakiHer1kg: 10.35 },
+            "MOZAMBIK": { ilk1kg: 19.36, sonrakiHer1kg: 6.68 },
+            "MYANMAR": { ilk1kg: 21.71, sonrakiHer1kg: 6.92 },
+            "NAMIBYA": { ilk1kg: 22.95, sonrakiHer1kg: 7.23 },
+            "NEPAL": { ilk1kg: 13.43, sonrakiHer1kg: 6.12 },
+            "NIJER": { ilk1kg: 22.41, sonrakiHer1kg: 10.35 },
+            "NIJERYA": { ilk1kg: 21.78, sonrakiHer1kg: 8.35 },
+            "NIKARAGUA": { ilk1kg: 22.81, sonrakiHer1kg: 15.20 },
+            "NORVEC": { ilk1kg: 27.66, sonrakiHer1kg: 6.68 },
+            "ORTA_AFRIKA_CUMHURIYETI": { ilk1kg: 22.81, sonrakiHer1kg: 15.20 },
+            "OZBEKISTAN": { ilk1kg: 15.32, sonrakiHer1kg: 4.88 },
+            "PAKISTAN": { ilk1kg: 15.16, sonrakiHer1kg: 5.54 },
+            "PALAU": { ilk1kg: 21.35, sonrakiHer1kg: 12.48 },
+            "PANAMA": { ilk1kg: 15.40, sonrakiHer1kg: 8.40 },
+            "PAPUA_YENI_GINE": { ilk1kg: 21.35, sonrakiHer1kg: 12.48 },
+            "PARAGUAY": { ilk1kg: 26.81, sonrakiHer1kg: 14.13 },
+            "PERU": { ilk1kg: 27.98, sonrakiHer1kg: 17.19 },
+            "POLONYA": { ilk1kg: 20.89, sonrakiHer1kg: 5.87 },
+            "PORTEKIZ": { ilk1kg: 20.59, sonrakiHer1kg: 6.15 },
+            "PUERTO_RIKO": { ilk1kg: 24.79, sonrakiHer1kg: 11.42 },
+            "REUNION": { ilk1kg: 21.17, sonrakiHer1kg: 8.06 },
+            "ROMANYA": { ilk1kg: 23.04, sonrakiHer1kg: 3.76 },
+            "RUANDA": { ilk1kg: 15.40, sonrakiHer1kg: 6.27 },
+            "RUSYA": { ilk1kg: 15.96, sonrakiHer1kg: 5.54 },
+            "SAMOA": { ilk1kg: 23.10, sonrakiHer1kg: 14.86 },
+            "SENEGAL": { ilk1kg: 18.24, sonrakiHer1kg: 9.62 },
+            "SEYSEL_ADALARI": { ilk1kg: 21.35, sonrakiHer1kg: 12.48 },
+            "SIERRA_LEONE": { ilk1kg: 23.36, sonrakiHer1kg: 8.08 },
+            "SINGAPUR": { ilk1kg: 19.53, sonrakiHer1kg: 8.40 },
+            "SIRBISTAN": { ilk1kg: 15.06, sonrakiHer1kg: 2.35 },
+            "SLOVAKYA": { ilk1kg: 15.88, sonrakiHer1kg: 5.44 },
+            "SLOVENYA": { ilk1kg: 12.41, sonrakiHer1kg: 2.38 },
+            "SOMALI": { ilk1kg: 12.84, sonrakiHer1kg: 7.04 },
+            "SRI_LANKA": { ilk1kg: 13.80, sonrakiHer1kg: 4.86 },
+            "ST_KITTS_VE_NEVIS": { ilk1kg: 23.77, sonrakiHer1kg: 9.98 },
+            "ST_LUCIA": { ilk1kg: 21.39, sonrakiHer1kg: 10.18 },
+            "ST_VINCENT_VE_GRENADINLER": { ilk1kg: 25.91, sonrakiHer1kg: 10.54 },
+            "SUDAN": { ilk1kg: 13.36, sonrakiHer1kg: 4.23 },
+            "SURINAM": { ilk1kg: 29.10, sonrakiHer1kg: 11.22 },
+            "SURIYE": { ilk1kg: 19.09, sonrakiHer1kg: 2.11 },
+            "SUUD_ARABISTAN": { ilk1kg: 12.33, sonrakiHer1kg: 4.98 },
+            "TACIKISTAN": { ilk1kg: 13.12, sonrakiHer1kg: 5.08 },
+            "TANZANYA": { ilk1kg: 14.99, sonrakiHer1kg: 6.17 },
+            "TAYLAND": { ilk1kg: 16.97, sonrakiHer1kg: 6.92 },
+            "TAYVAN": { ilk1kg: 16.56, sonrakiHer1kg: 5.90 },
+            "TOGO": { ilk1kg: 22.95, sonrakiHer1kg: 7.23 },
+            "TOKELAU": { ilk1kg: 21.35, sonrakiHer1kg: 12.48 },
+            "TONGA": { ilk1kg: 21.35, sonrakiHer1kg: 12.48 },
+            "TRINIDAD_VE_TOBAGO": { ilk1kg: 25.91, sonrakiHer1kg: 10.54 },
+            "TUNUS": { ilk1kg: 20.49, sonrakiHer1kg: 7.40 },
+            "TURKMENISTAN": { ilk1kg: 7.75, sonrakiHer1kg: 3.91 },
+            "TUVALU": { ilk1kg: 21.35, sonrakiHer1kg: 12.48 },
+            "UGANDA": { ilk1kg: 15.54, sonrakiHer1kg: 5.63 },
+            "UKRAYNA": { ilk1kg: 22.81, sonrakiHer1kg: 4.86 },
+            "UMMAN": { ilk1kg: 16.24, sonrakiHer1kg: 5.83 },
+            "URDUN": { ilk1kg: 14.14, sonrakiHer1kg: 4.62 },
+            "URUGUAY": { ilk1kg: 27.47, sonrakiHer1kg: 13.91 },
+            "VANUATU": { ilk1kg: 21.35, sonrakiHer1kg: 12.48 },
+            "VATIKAN": { ilk1kg: 19.98, sonrakiHer1kg: 4.73 },
+            "VENEZUELA": { ilk1kg: 18.73, sonrakiHer1kg: 11.31 },
+            "VIETNAM": { ilk1kg: 15.16, sonrakiHer1kg: 7.82 },
+            "YEMEN": { ilk1kg: 12.29, sonrakiHer1kg: 5.36 },
+            "YENI_ZELANDA": { ilk1kg: 35.05, sonrakiHer1kg: 20.18 },
+            "YUNANISTAN": { ilk1kg: 14.40, sonrakiHer1kg: 3.08 },
+            "ZAMBIYA": { ilk1kg: 22.95, sonrakiHer1kg: 7.23 },
+            "ZIMBABVE": { ilk1kg: 22.95, sonrakiHer1kg: 7.23 }
+        };
+
+        // TCMB'den döviz kurlarını alma
+        async function getExchangeRates() {
+            try {
+                // XML dosyasından döviz kurlarını al
+                const response = await fetch('https://www.tcmb.gov.tr/kurlar/today.xml');
+                const data = await response.text();
+                
+                // XML verisini parse et
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(data, "text/xml");
+                
+                // SDR/TRY kurunu al
+                const sdrTry = parseFloat(xmlDoc.querySelector("Currency[CurrencyCode='SDR'] BanknoteSelling").textContent.replace(',', '.'));
+                
+                // USD/TRY Efektif Satış kurunu al
+                const usdTry = parseFloat(xmlDoc.querySelector("Currency[CurrencyCode='USD'] BanknoteSelling").textContent.replace(',', '.'));
+                
+                // EUR/TRY Efektif Satış kurunu al
+                const eurTry = parseFloat(xmlDoc.querySelector("Currency[CurrencyCode='EUR'] BanknoteSelling").textContent.replace(',', '.'));
+                
+                // Tarih bilgisini al
+                const tarih = xmlDoc.querySelector("Tarih_Date").getAttribute("Tarih");
+                
+                return {
+                    USD: usdTry,
+                    EUR: eurTry,
+                    SDR: sdrTry,
+                    Tarih: tarih
+                };
+            } catch (error) {
+                console.error('Döviz kurları alınamadı:', error);
+                // Hata durumunda varsayılan değerler
+                return {
+                    USD: 40.7282,
+                    EUR: 47.1096,
+                    SDR: 55.3471,
+                    Tarih: new Date().toISOString().split('T')[0]
+                };
+            }
+        }
+
+        // TL'yi 10 TL'lik adımlara yuvarlama
+        function roundTL(amount) {
+            const remainder = amount % 10;
+            if (remainder === 0) return amount;
+            return amount + (10 - remainder);
+        }
+
+        // EUR'u 1 EUR'luk adımlara yuvarlama
+        function roundEUR(amount) {
+            return Math.ceil(amount);
+        }
+
+        // USD'yi 1 USD'lik adımlara yuvarlama
+        function roundUSD(amount) {
+            return Math.ceil(amount);
+        }
+
+        // Hesaplama butonuna tıklama olayı
+        document.getElementById('hesapla').addEventListener('click', async function() {
+            const ulke = document.getElementById('ulke').value;
+            
+            if (!ulke) {
+                alert('Lütfen bir ülke seçin.');
+                return;
+            }
+            
+            // Loading göstergesini göster
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('sonuc').style.display = 'none';
+            
+            // Seçilen ülkenin fiyat verilerini al
+            const fiyatData = ulkeFiyatlari[ulke];
+            
+            if (!fiyatData) {
+                alert('Seçilen ülke için fiyat bilgisi bulunamadı.');
+                document.getElementById('loading').style.display = 'none';
+                return;
+            }
+            
+            // Döviz kurlarını al
+            const exchangeRates = await getExchangeRates();
+            
+            // 1. Tabloyu kullanarak 10kg için SDR'yi hesapla
+            const sdrDegeri = fiyatData.ilk1kg + (9 * fiyatData.sonrakiHer1kg);
+            
+            // 2. SDR'yi TL'ye çevir
+            const tlTutari = sdrDegeri * exchangeRates.SDR;
+            
+            // 3. TL tutarına 150 TL daha ekle
+            const tlTutariWithFee = tlTutari + 150;
+            
+            // 4. Çıkan sonucu küsuratlı göstermemek için yukarı yuvarla, en küçük birim 10 TL olacak şekilde
+            const tlSonuc = roundTL(tlTutariWithFee);
+            
+            // 5. Çıkan sonucu TL hesap sonucu olarak ekranda göster
+            
+            // 6. TL sonucunu güncel kur ile EUR olarak çevir
+            const eurTutari = tlSonuc / exchangeRates.EUR;
+            
+            // 7. EUR değerine 20 EUR ekle
+            const eurTutariWithFee = eurTutari + 20;
+            
+            // 8. Çıkan EUR değerini en küçük birim 1 EUR olacak şekilde yukarı yuvarla ve ekranda göster
+            const eurSonuc = roundEUR(eurTutariWithFee);
+            
+            // 9. TL sonucunu güncel kurdan USD'ye çevir
+            const usdTutari = tlSonuc / exchangeRates.USD;
+            
+            // 10. USD değerine 20 USD ekle
+            const usdTutariWithFee = usdTutari + 20;
+            
+            // 11. Çıkan USD değerini en küçük birim 1 USD olacak şekilde yukarı yuvarla ve ekranda göster
+            const usdSonuc = roundUSD(usdTutariWithFee);
+            
+            // Sonuçları göster
+            document.getElementById('tl_sonuc').textContent = tlSonuc.toFixed(0) + ' TL';
+            document.getElementById('eur_sonuc').textContent = eurSonuc.toFixed(0) + ' EUR';
+            document.getElementById('usd_sonuc').textContent = usdSonuc.toFixed(0) + ' USD';
+            
+            // Hesaplama detaylarını göster
+            
+            // Loading göstergesini gizle ve sonuçları göster
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('sonuc').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
