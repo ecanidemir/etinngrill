@@ -66,52 +66,14 @@
             border-left: 5px solid #e63946;
             display: none;
         }
+		
         .result h3 {
             margin-top: 0;
             color: #e63946;
-            font-size: 22px;
-        }
-        .result p {
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-        .result .price {
-            font-size: 24px;
-            font-weight: bold;
-            color: #e63946;
-        }
-        .info {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #e8f4f8;
-            border-radius: 5px;
-            font-size: 14px;
-            color: #333;
-        }
-        .loading {
-            display: none;
+            font-size: 20px;
             text-align: center;
-            margin-top: 20px;
         }
-        .loading-spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #e63946;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .date-info {
-            text-align: right;
-            font-size: 12px;
-            color: #666;
-            margin-top: 10px;
-        }
+
         .currency-result {
             display: flex;
             justify-content: space-between;
@@ -141,19 +103,23 @@
             font-size: 22px;
             margin-top: 10px;
         }
-        .calculation-details {
+        .loading {
+            display: none;
+            text-align: center;
             margin-top: 20px;
-            padding: 15px;
-            background-color: #f0f0f0;
-            border-radius: 5px;
-            font-size: 14px;
         }
-        .calculation-details h4 {
-            margin-top: 0;
-            color: #333;
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #e63946;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
         }
-        .calculation-details p {
-            margin-bottom: 5px;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         .bank-info {
             margin-top: 30px;
@@ -205,6 +171,60 @@
         .language-btn:hover {
             background-color: #d62828;
         }
+        .product-info {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 5px solid #e63946;
+            display: none;
+        }
+        .product-info h3 {
+            margin-top: 0;
+            color: #e63946;
+            font-size: 20px;
+            text-align: center;
+        }
+        .product-info .currency-result {
+            margin-bottom: 20px;
+        }
+        .total-info {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 5px solid #e63946;
+            display: none;
+        }
+        .total-info h3 {
+            margin-top: 0;
+            color: #e63946;
+            font-size: 20px;
+            text-align: center;
+        }
+		.total-info .price {
+            color: #e63946;
+			font-weight: bold;
+        }
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .currency-result {
+                flex-direction: column;
+            }
+            .currency-box {
+                margin: 10px 0;
+            }
+            .language-selector {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -231,7 +251,7 @@
         </div>
         
         <div id="sonuc" class="result">
-            
+			<h3 id="sonuc-title">Shipping Price</h3>
             <div class="currency-result">
                 <div class="currency-box">
                     <h4 id="tl-title">Türk Lirası (TL)</h4>
@@ -246,7 +266,42 @@
                     <div class="price" id="usd_sonuc"></div>
                 </div>
             </div>
-            
+        </div>
+        
+        <div id="product-info" class="product-info">
+            <h3 id="product-info-title">Product Price</h3>
+            <div class="currency-result">
+                <div class="currency-box">
+                    <h4 id="product-tl-title">Türk Lirası (TL)</h4>
+                    <div class="price" id="product_tl"></div>
+                </div>
+                <div class="currency-box">
+                    <h4 id="product-eur-title">Euro (EUR)</h4>
+                    <div class="price" id="product_eur"></div>
+                </div>
+                <div class="currency-box">
+                    <h4 id="product-usd-title">Amerikan Doları (USD)</h4>
+                    <div class="price" id="product_usd"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="total-info" class="total-info">
+            <h3 id="total-info-title">Total Amount to Pay</h3>
+            <div class="currency-result">
+                <div class="currency-box">
+                    <h4 id="total-tl-title">Türk Lirası (TL)</h4>
+                    <div class="price" id="total_tl"></div>
+                </div>
+                <div class="currency-box">
+                    <h4 id="total-eur-title">Euro (EUR)</h4>
+                    <div class="price" id="total_eur"></div>
+                </div>
+                <div class="currency-box">
+                    <h4 id="total-usd-title">Amerikan Doları (USD)</h4>
+                    <div class="price" id="total_usd"></div>
+                </div>
+            </div>
         </div>
         
         <div id="bank-info" class="bank-info">
@@ -281,6 +336,55 @@
     </div>
 
     <script>
+        // Sağ tık ve kopyalama engelleme
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            // F12 geliştirici araçlarını engelle
+            if (e.keyCode === 123) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+U kaynak kodu göstermeyi engelle
+            if (e.ctrlKey && e.keyCode === 85) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+I geliştirici araçlarını engelle
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+Shift+J konsolu engelle
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+                e.preventDefault();
+                return false;
+            }
+            // Ctrl+S kaydetmeyi engelle
+            if (e.ctrlKey && e.keyCode === 83) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        // Drag and drop engelleme
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+        
+        // Çıktıyı resme çevirme engelleme
+        window.addEventListener('beforeprint', function(e) {
+            document.body.style.display = 'none';
+        });
+        
+        window.addEventListener('afterprint', function(e) {
+            document.body.style.display = 'block';
+        });
+        
         // Dil verileri
         const translations = {
             tr: {
@@ -298,7 +402,16 @@
                 "try-iban-label": "TRY IBAN",
                 "usd-iban-label": "USD IBAN",
                 "eur-iban-label": "EUR IBAN",
-                "select-country": "-- Ülke Seçin --"
+                "select-country": "-- Ülke Seçin --",
+				"sonuc-title": "Kargo Ücreti",
+                "product-info-title": "Ürün Fiyatı",
+                "product-tl-title": "Türk Lirası (TL)",
+                "product-eur-title": "Euro (EUR)",
+                "product-usd-title": "Amerikan Doları (USD)",
+                "total-info-title": "Toplam Ödenecek Tutar",
+                "total-tl-title": "Türk Lirası (TL)",
+                "total-eur-title": "Euro (EUR)",
+                "total-usd-title": "Amerikan Doları (USD)"
             },
             en: {
                 "page-title": "Shipping costs outside Türkiye",
@@ -315,7 +428,16 @@
                 "try-iban-label": "TRY IBAN",
                 "usd-iban-label": "USD IBAN",
                 "eur-iban-label": "EUR IBAN",
-                "select-country": "-- Select Country --"
+                "select-country": "-- Select Country --",
+				"sonuc-title": "Shipping Price",
+                "product-info-title": "Product Price",
+                "product-tl-title": "Turkish Lira (TL)",
+                "product-eur-title": "Euro (EUR)",
+                "product-usd-title": "US Dollar (USD)",
+                "total-info-title": "Total Amount to Pay",
+                "total-tl-title": "Turkish Lira (TL)",
+                "total-eur-title": "Euro (EUR)",
+                "total-usd-title": "US Dollar (USD)"
             }
         };
         
@@ -518,7 +640,7 @@
             { kod: "ZIMBABVE", tr: "Zimbabve", en: "Zimbabwe" }
         ];
 
-        // Ülke fiyat verileri (ulkeler_sdr.xlsx tablosundan alınan verilere göre)
+        // Ülke fiyat verileri (düz metin olarak)
         const ulkeFiyatlari = {
             "AFGANISTAN": { ilk1kg: 22.98, sonrakiHer1kg: 6.97 },
             "ALMANYA": { ilk1kg: 13.82, sonrakiHer1kg: 2.52 },
@@ -781,7 +903,7 @@
             elements.forEach(element => {
                 const id = element.id;
                 if (translations[lang][id]) {
-                    element.textContent = translations[lang][id];
+                    element.innerHTML = translations[lang][id];
                 }
             });
             
@@ -801,8 +923,9 @@
             firstOption.textContent = translations[lang]['select-country'];
             select.appendChild(firstOption);
             
-            // Ülkeleri ekle
-            ulkeVerileri.forEach(ulke => {
+            // Ülkeleri alfabetik sırala ve ekle
+            const sortedCountries = [...ulkeVerileri].sort((a, b) => a[lang].localeCompare(b[lang]));
+            sortedCountries.forEach(ulke => {
                 const option = document.createElement('option');
                 option.value = ulke.kod;
                 option.textContent = ulke[lang];
@@ -832,6 +955,8 @@
             // Loading göstergesini göster
             document.getElementById('loading').style.display = 'block';
             document.getElementById('sonuc').style.display = 'none';
+            document.getElementById('product-info').style.display = 'none';
+            document.getElementById('total-info').style.display = 'none';
             document.getElementById('bank-info').style.display = 'none';
             
             // Seçilen ülkenin fiyat verilerini al
@@ -858,34 +983,52 @@
             // 4. Çıkan sonucu küsuratlı göstermemek için yukarı yuvarla, en küçük birim 10 TL olacak şekilde
             const tlSonuc = roundTL(tlTutariWithFee);
             
-            // 5. Çıkan sonucu TL hesap sonucu olarak ekranda göster
-            
-            // 6. TL sonucunu güncel kur ile EUR olarak çevir
+            // 5. TL sonucunu güncel kur ile EUR olarak çevir
             const eurTutari = tlSonuc / exchangeRates.EUR;
             
-            // 7. EUR değerine 20 EUR ekle
+            // 6. EUR değerine 20 EUR ekle
             const eurTutariWithFee = eurTutari + 20;
             
-            // 8. Çıkan EUR değerini en küçük birim 1 EUR olacak şekilde yukarı yuvarla ve ekranda göster
+            // 7. Çıkan EUR değerini en küçük birim 1 EUR olacak şekilde yukarı yuvarla ve ekranda göster
             const eurSonuc = roundEUR(eurTutariWithFee);
             
-            // 9. TL sonucunu güncel kurdan USD'ye çevir
+            // 8. TL sonucunu güncel kurdan USD'ye çevir
             const usdTutari = tlSonuc / exchangeRates.USD;
             
-            // 10. USD değerine 20 USD ekle
+            // 9. USD değerine 20 USD ekle
             const usdTutariWithFee = usdTutari + 20;
             
-            // 11. Çıkan USD değerini en küçük birim 1 USD olacak şekilde yukarı yuvarla ve ekranda göster
+            // 10. Çıkan USD değerini en küçük birim 1 USD olacak şekilde yukarı yuvarla ve ekranda göster
             const usdSonuc = roundUSD(usdTutariWithFee);
             
-            // Sonuçları göster
+            // Kargo sonuçlarını göster
             document.getElementById('tl_sonuc').textContent = tlSonuc.toFixed(0) + ' TL';
             document.getElementById('eur_sonuc').textContent = eurSonuc.toFixed(0) + ' EUR';
             document.getElementById('usd_sonuc').textContent = usdSonuc.toFixed(0) + ' USD';
             
+            // Ürün fiyatını hesapla ve göster
+            const urunFiyatiTL = 5200;
+            const urunFiyatiEUR = roundEUR(urunFiyatiTL / exchangeRates.EUR);
+            const urunFiyatiUSD = roundUSD(urunFiyatiTL / exchangeRates.USD);
+            
+            document.getElementById('product_tl').textContent = urunFiyatiTL.toFixed(0) + ' TL';
+            document.getElementById('product_eur').textContent = urunFiyatiEUR.toFixed(0) + ' EUR';
+            document.getElementById('product_usd').textContent = urunFiyatiUSD.toFixed(0) + ' USD';
+            
+            // Toplam tutarı hesapla ve göster
+            const toplamTL = tlSonuc + urunFiyatiTL;
+            const toplamEUR = eurSonuc + urunFiyatiEUR;
+            const toplamUSD = usdSonuc + urunFiyatiUSD;
+            
+            document.getElementById('total_tl').textContent = toplamTL.toFixed(0) + ' TL';
+            document.getElementById('total_eur').textContent = toplamEUR.toFixed(0) + ' EUR';
+            document.getElementById('total_usd').textContent = toplamUSD.toFixed(0) + ' USD';
+            
             // Loading göstergesini gizle ve sonuçları göster
             document.getElementById('loading').style.display = 'none';
             document.getElementById('sonuc').style.display = 'block';
+            document.getElementById('product-info').style.display = 'block';
+            document.getElementById('total-info').style.display = 'block';
             document.getElementById('bank-info').style.display = 'block';
         });
         
@@ -893,6 +1036,29 @@
         window.addEventListener('DOMContentLoaded', function() {
             changeLanguage('tr');
         });
+        
+        // Konsol mesajlarını engelleme
+        console.log = function() {};
+        console.warn = function() {};
+        console.error = function() {};
+        console.info = function() {};
+        console.debug = function() {};
+        
+        // Geliştirici araçları tespit edildiğinde
+        let devtools = {open: false, orientation: null};
+        const threshold = 160;
+        setInterval(function() {
+            if (window.outerHeight - window.innerHeight > threshold || 
+                window.outerWidth - window.innerWidth > threshold) {
+                if (!devtools.open) {
+                    devtools.open = true;
+                    // Geliştirici araçları açıldığında sayfayı boşalt
+                    document.body.innerHTML = '<div style="text-align:center;padding:50px;font-family:Arial,sans-serif;"><h1>Erişim Engellendi</h1><p>Bu sayfanın kaynak kodunu görüntüleme yetkiniz bulunmamaktadır.</p></div>';
+                }
+            } else {
+                devtools.open = false;
+            }
+        }, 500);
     </script>
 </body>
 </html>
