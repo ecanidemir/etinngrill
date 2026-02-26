@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloudflare API Test</title>
+    <style>
+        body { font-family: monospace; background: #222; color: #0f0; padding: 20px; }
+        .box { border: 1px solid #444; padding: 15px; background: #000; margin-top: 10px; }
+        .fail { color: #f44; }
+    </style>
+</head>
+<body>
+    <h2>🔍 Bağlantı Testi</h2>
+    <button onclick="testEt()" style="padding:10px; cursor:pointer;">Testi Başlat</button>
+    <div id="sonuc" class="box">Henüz test yapılmadı.</div>
+
+    <script>
+        async function testEt() {
+            const div = document.getElementById('sonuc');
+            div.innerHTML = "İstek gönderiliyor...";
+            
+            try {
+                const res = await fetch('/api/kur-test');
+                
+                if (res.status === 404) {
+                    div.innerHTML = "<span class='fail'>KRİTİK HATA 404:</span> Cloudflare fonksiyonu görmüyor! 'functions' klasörü ana dizinde olmayabilir.";
+                    return;
+                }
+                
+                const data = await res.json();
+                div.innerHTML = "<b>Yanıt Geldi:</b><br><pre>" + JSON.stringify(data, null, 4) + "</pre>";
+                
+                if (data.http_kodu === 403 || data.http_kodu === 500) {
+                    div.innerHTML += "<br><span class='fail'>TEŞHİS:</span> Merkez Bankası Cloudflare IP'sini engelliyor.";
+                }
+            } catch (e) {
+                div.innerHTML = "<span class='fail'>HATA:</span> " + e.message;
+            }
+        }
+    </script>
+</body>
+</html>
