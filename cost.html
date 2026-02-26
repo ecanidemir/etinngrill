@@ -126,7 +126,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .currency-box h4 { margin: 0 0 10px 0; font-size: 14px; color: #666; }
-        .currency-box .price { font-size: 20px; font-weight: bold; color: #333; }
+        .currency-box .price { font-size: 18px; font-weight: bold; color: #333; }
         
         .loading { display: none; text-align: center; margin-top: 20px; }
         .spinner {
@@ -146,7 +146,7 @@
         }
         .bank-info table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         .bank-info th, .bank-info td { padding: 10px; text-align: left; border-bottom: 1px solid #eee; font-size: 14px; }
-        .bank-info th { background: #f9f9f9; width: 30%; }
+        .bank-info th { background: #f9f9f9; width: 35%; }
 
         @media (max-width: 600px) {
             .top-container { flex-direction: column; align-items: stretch; }
@@ -171,6 +171,14 @@
     <div class="form-container">
         <h1 id="page-title">Shipping costs outside Türkiye</h1>
         
+        <div class="form-group">
+            <label for="model" id="model-label">Model Seçin:</label>
+            <select id="model">
+                <option value="standart" data-tr="Standart Mangal" data-en="Standard Grill">Standart Mangal</option>
+                <option value="aparatli" data-tr="Şiş Kebap Aparatlı" data-en="With Shish Kebab Apparatus">Şiş Kebap Aparatlı</option>
+            </select>
+        </div>
+
         <div class="form-group">
             <label for="ulke" id="country-label">Select Country:</label>
             <select id="ulke">
@@ -255,7 +263,8 @@
     <script>
         const translations = {
             tr: {
-                "page-title": "Türkiye Dışı Kargo Ücretleri (10 KG)",
+                "page-title": "Türkiye Dışı Kargo Ücretleri",
+                "model-label": "Ürün Seçin:",
                 "country-label": "Ülke Seçin:",
                 "hesapla": "Hesapla",
                 "calculating-text": "Hesaplanıyor...",
@@ -270,12 +279,13 @@
                 "usd-iban-label": "USD IBAN",
                 "eur-iban-label": "EUR IBAN",
                 "select-country": "-- Ülke Seçin --",
-                "sonuc-title": "Kargo Ücreti",
+                "sonuc-title": "Kargo Ücreti (+200₺ Pay Dahil)",
                 "product-info-title": "Ürün Fiyatı",
                 "total-info-title": "Toplam Ödenecek Tutar"
             },
             en: {
-                "page-title": "International Shipping Costs (10 KG)",
+                "page-title": "International Shipping Costs",
+                "model-label": "Choose Product:",
                 "country-label": "Select Country:",
                 "hesapla": "Calculate",
                 "calculating-text": "Calculating...",
@@ -290,7 +300,7 @@
                 "usd-iban-label": "USD IBAN",
                 "eur-iban-label": "EUR IBAN",
                 "select-country": "-- Select Country --",
-                "sonuc-title": "Shipping Price",
+                "sonuc-title": "Shipping Price (+200₺ Safety Inc.)",
                 "product-info-title": "Product Price",
                 "total-info-title": "Total Amount to Pay"
             }
@@ -334,7 +344,6 @@
             { kod: "SUUD_ARABISTAN", tr: "Suudi Arabistan", en: "Saudi Arabia" },
             { kod: "UKRAYNA", tr: "Ukrayna", en: "Ukraine" },
             { kod: "YUNANISTAN", tr: "Yunanistan", en: "Greece" }
-            // ... (Diğer ülkeleri buraya ekleyebilirsiniz, kısalık için temel olanları bıraktım)
         ];
 
         const ulkeFiyatlari = {
@@ -377,6 +386,11 @@
             "YUNANISTAN": { ilk1kg: 14.40, sonrakiHer1kg: 3.08 }
         };
 
+        const modelConfig = {
+            standart: { price: 9000, weight: 10 },
+            aparatli: { price: 10500, weight: 11 }
+        };
+
         window.currentRates = null;
 
         async function getExchangeRates() {
@@ -385,8 +399,7 @@
                 const response = await fetch('/api/rates');
                 if (!response.ok) throw new Error('API Hatası');
                 const rates = await response.json();
-
-                if (!rates.SDR) rates.SDR = 60.31; // Fallback
+                if (!rates.SDR) rates.SDR = 60.31; 
 
                 ratesDisplay.innerHTML = `
                     📅 ${rates.Tarih} <br>
@@ -398,7 +411,7 @@
                 return rates;
             } catch (error) {
                 const fallback = { USD: 43.94, EUR: 51.88, SDR: 60.31, Tarih: "Sabit Kur" };
-                ratesDisplay.innerHTML = `⚠️ Güncel kur alınamadı, yedekler devrede.`;
+                ratesDisplay.innerHTML = `⚠️ Güncel kur alınamadı.`;
                 ratesDisplay.style.display = 'block';
                 return fallback;
             }
@@ -413,6 +426,12 @@
                 if (el) el.innerHTML = translations[lang][id];
             });
             
+            // Model isimlerini çevir
+            const modelSelect = document.getElementById('model');
+            Array.from(modelSelect.options).forEach(opt => {
+                opt.textContent = opt.getAttribute(`data-${lang}`);
+            });
+
             const select = document.getElementById('ulke');
             const currentVal = select.value;
             select.innerHTML = `<option value="">${translations[lang]['select-country']}</option>`;
@@ -441,6 +460,9 @@
             const ulkeKod = document.getElementById('ulke').value;
             if (!ulkeKod) { alert('Lütfen ülke seçin!'); return; }
 
+            const selectedModelKey = document.getElementById('model').value;
+            const model = modelConfig[selectedModelKey];
+
             document.getElementById('loading').style.display = 'block';
             ['sonuc', 'product-info', 'total-info', 'bank-info'].forEach(id => document.getElementById(id).style.display = 'none');
 
@@ -448,14 +470,15 @@
             const rates = window.currentRates;
             const f = ulkeFiyatlari[ulkeKod];
 
-            // 1. Kargo Hesaplama (10 KG Sabit - Masrafsız)
-            const sdrToplam = f.ilk1kg + (9 * f.sonrakiHer1kg);
-            const tlKargo = roundTL(sdrToplam * rates.SDR);
+            // 1. Kargo Hesaplama (Dinamik Ağırlık + 200₺ Güvenlik Payı)
+            // SDR Formülü: İlk 1kg + (Toplam KG - 1) * Sonraki birimler
+            const sdrToplam = f.ilk1kg + ((model.weight - 1) * f.sonrakiHer1kg);
+            const tlKargo = roundTL((sdrToplam * rates.SDR) + 200);
             const eurKargo = roundCUR(tlKargo / rates.EUR);
             const usdKargo = roundCUR(tlKargo / rates.USD);
 
-            // 2. Ürün Fiyatı (9000 TL Sabit)
-            const urunTL = 9000;
+            // 2. Ürün Fiyatı (Modele göre 9000 veya 10500)
+            const urunTL = model.price;
             const urunEUR = roundCUR(urunTL / rates.EUR);
             const urunUSD = roundCUR(urunTL / rates.USD);
 
