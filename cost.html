@@ -857,26 +857,34 @@
             const ratesDisplay = document.getElementById('rates-display');
             try {
                 const response = await fetch('/api/rates');
-                if (!response.ok) throw new Error('API Hatası');
-                
-                const rates = await response.json();
-                
-                // Ekranı güncelle
-                ratesDisplay.innerHTML = `
-                    📅 ${rates.Tarih} <br>
-                    <span>USD: ${rates.USD.toFixed(2)} ₺</span> | 
-                    <span>EUR: ${rates.EUR.toFixed(2)} ₺</span> | 
-                    <span>SDR: ${rates.SDR.toFixed(2)} ₺</span>
-                `;
-                ratesDisplay.style.display = 'block';
-                return rates;
+                if (!response.ok) throw new Error('API yanıt vermedi');
 
+                const rates = await response.json();
+
+                // SDR (XDR) verisi XML'de bazen farklıdır, eğer null gelirse sabit kur ata
+                if (!rates.SDR) {
+                    console.warn("SDR (XDR) kuru alınamadı, varsayılan kullanılıyor.");
+                    rates.SDR = 60.31; // Bugünün yaklaşık değeri
+                }
+
+                if(rates.USD && rates.EUR) {
+                    ratesDisplay.innerHTML = `
+                        📅 ${rates.Tarih} <br>
+                        <span>USD: ${rates.USD.toFixed(2)} ₺</span> | 
+                        <span>EUR: ${rates.EUR.toFixed(2)} ₺</span> | 
+                        <span>SDR: ${rates.SDR.toFixed(2)} ₺</span>
+                    `;
+                    ratesDisplay.style.display = 'block';
+                    return rates;
+                } else {
+                    throw new Error('USD veya EUR verisi eksik');
+                }
             } catch (error) {
-                console.error('Kurlar yüklenemedi, sabitler yükleniyor:', error);
-                const fallback = { USD: 40.72, EUR: 47.10, SDR: 55.34, Tarih: "Sabit Kur" };
-                ratesDisplay.innerHTML = "⚠️ Güncel kurlar alınamadı.";
+                console.error('Döviz kurları alınamadı:', error);
+                const fallbackRates = { USD: 43.94, EUR: 51.88, SDR: 60.31, Tarih: "Yedek Kurlar" };
+                ratesDisplay.innerHTML = `⚠️ Güncel kur alınamadı, yedek kurlar kullanılıyor.`;
                 ratesDisplay.style.display = 'block';
-                return fallback;
+                return fallbackRates;
             }
         }
 
@@ -1018,5 +1026,6 @@
     </script>
 </body>
 </html>
+
 
 
