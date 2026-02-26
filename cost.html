@@ -852,41 +852,39 @@
         // Kurları global bir değişkende tutalım
         window.currentRates = null;
 
-        // TCMB'den döviz kurlarını alma (CORS Proxy ile)
+        // Kendi Cloudflare API'mizden döviz kurlarını alma
         async function getExchangeRates() {
+            const ratesDisplay = document.getElementById('rates-display');
+            
             try {
-                const targetUrl = encodeURIComponent('https://www.tcmb.gov.tr/kurlar/today.xml');
-                const proxyUrl = `https://api.allorigins.win/raw?url=${targetUrl}`;
+                // Cloudflare Functions üzerindeki kendi API endpoint'imize istek atıyoruz
+                const response = await fetch('/api/rates');
                 
-                const response = await fetch(proxyUrl);
-                const data = await response.text();
+                if (!response.ok) {
+                    throw new Error('API yanıt vermedi');
+                }
                 
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(data, "text/xml");
+                const rates = await response.json();
                 
-                const sdrTry = parseFloat(xmlDoc.querySelector("Currency[CurrencyCode='SDR'] BanknoteSelling").textContent.replace(',', '.'));
-                const usdTry = parseFloat(xmlDoc.querySelector("Currency[CurrencyCode='USD'] BanknoteSelling").textContent.replace(',', '.'));
-                const eurTry = parseFloat(xmlDoc.querySelector("Currency[CurrencyCode='EUR'] BanknoteSelling").textContent.replace(',', '.'));
-                const tarih = xmlDoc.querySelector("Tarih_Date").getAttribute("Tarih");
-                
-                const rates = { USD: usdTry, EUR: eurTry, SDR: sdrTry, Tarih: tarih };
-                
-                const ratesDisplay = document.getElementById('rates-display');
-                ratesDisplay.innerHTML = `
-                    📅 ${tarih} <br>
-                    <span>USD: ${usdTry.toFixed(2)} ₺</span> | 
-                    <span>EUR: ${eurTry.toFixed(2)} ₺</span> | 
-                    <span>SDR: ${sdrTry.toFixed(2)} ₺</span>
-                `;
-                ratesDisplay.style.display = 'block';
-                
-                return rates;
+                if(rates.USD && rates.EUR && rates.SDR) {
+                    ratesDisplay.innerHTML = `
+                        📅 ${rates.Tarih} <br>
+                        <span>USD: ${rates.USD.toFixed(2)} ₺</span> | 
+                        <span>EUR: ${rates.EUR.toFixed(2)} ₺</span> | 
+                        <span>SDR: ${rates.SDR.toFixed(2)} ₺</span>
+                    `;
+                    ratesDisplay.style.display = 'block';
+                    return rates;
+                } else {
+                    throw new Error('API eksik veri döndürdü');
+                }
 
             } catch (error) {
                 console.error('Döviz kurları alınamadı:', error);
+                
+                // Hata durumunda sistemin çökmemesi için sabit kurlar (Fail-safe)
                 const fallbackRates = { USD: 40.7282, EUR: 47.1096, SDR: 55.3471, Tarih: "Hata - Sabit Kur" };
                 
-                const ratesDisplay = document.getElementById('rates-display');
                 ratesDisplay.innerHTML = `⚠️ Güncel kur alınamadı, sabit kurlar kullanılıyor.<br>
                     <span>USD: ${fallbackRates.USD.toFixed(2)} ₺</span> | 
                     <span>EUR: ${fallbackRates.EUR.toFixed(2)} ₺</span>`;
@@ -1034,3 +1032,4 @@
     </script>
 </body>
 </html>
+
