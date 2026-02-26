@@ -855,42 +855,28 @@
         // Kendi Cloudflare API'mizden döviz kurlarını alma
         async function getExchangeRates() {
             const ratesDisplay = document.getElementById('rates-display');
-            
             try {
-                // Cloudflare Functions üzerindeki kendi API endpoint'imize istek atıyoruz
                 const response = await fetch('/api/rates');
-                
-                if (!response.ok) {
-                    throw new Error('API yanıt vermedi');
-                }
+                if (!response.ok) throw new Error('API Hatası');
                 
                 const rates = await response.json();
                 
-                if(rates.USD && rates.EUR && rates.SDR) {
-                    ratesDisplay.innerHTML = `
-                        📅 ${rates.Tarih} <br>
-                        <span>USD: ${rates.USD.toFixed(2)} ₺</span> | 
-                        <span>EUR: ${rates.EUR.toFixed(2)} ₺</span> | 
-                        <span>SDR: ${rates.SDR.toFixed(2)} ₺</span>
-                    `;
-                    ratesDisplay.style.display = 'block';
-                    return rates;
-                } else {
-                    throw new Error('API eksik veri döndürdü');
-                }
+                // Ekranı güncelle
+                ratesDisplay.innerHTML = `
+                    📅 ${rates.Tarih} <br>
+                    <span>USD: ${rates.USD.toFixed(2)} ₺</span> | 
+                    <span>EUR: ${rates.EUR.toFixed(2)} ₺</span> | 
+                    <span>SDR: ${rates.SDR.toFixed(2)} ₺</span>
+                `;
+                ratesDisplay.style.display = 'block';
+                return rates;
 
             } catch (error) {
-                console.error('Döviz kurları alınamadı:', error);
-                
-                // Hata durumunda sistemin çökmemesi için sabit kurlar (Fail-safe)
-                const fallbackRates = { USD: 40.7282, EUR: 47.1096, SDR: 55.3471, Tarih: "Hata - Sabit Kur" };
-                
-                ratesDisplay.innerHTML = `⚠️ Güncel kur alınamadı, sabit kurlar kullanılıyor.<br>
-                    <span>USD: ${fallbackRates.USD.toFixed(2)} ₺</span> | 
-                    <span>EUR: ${fallbackRates.EUR.toFixed(2)} ₺</span>`;
+                console.error('Kurlar yüklenemedi, sabitler yükleniyor:', error);
+                const fallback = { USD: 40.72, EUR: 47.10, SDR: 55.34, Tarih: "Sabit Kur" };
+                ratesDisplay.innerHTML = "⚠️ Güncel kurlar alınamadı.";
                 ratesDisplay.style.display = 'block';
-
-                return fallbackRates;
+                return fallback;
             }
         }
 
@@ -1032,4 +1018,5 @@
     </script>
 </body>
 </html>
+
 
