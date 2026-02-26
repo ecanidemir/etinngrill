@@ -9,24 +9,31 @@ export async function onRequest(context) {
         if (!response.ok) throw new Error("TCMB bağlantı hatası");
         const xmlText = await response.text();
 
-        const findRate = (code) => {
-            // Önce Efektif Satış'a bak, yoksa Döviz Satışı'na bak (SDR için gerekli)
-            const banknoteRegex = new RegExp(`<Currency[^>]*?CurrencyCode="${code}"[\\s\\S]*?<BanknoteSelling>([\\d\\.,]+)<\\/BanknoteSelling>`, 'i');
-            const forexRegex = new RegExp(`<Currency[^>]*?CurrencyCode="${code}"[\\s\\S]*?<ForexSelling>([\\d\\.,]+)<\\/ForexSelling>`, 'i');
-            
-            const match = xmlText.match(banknoteRegex) || xmlText.match(forexRegex);
-            return match ? parseFloat(match[1].replace(',', '.')) : null;
+        const findRate = (code, preferredTags) => {
+            for (let tag of preferredTags) {
+                const regex = new RegExp(`<Currency[^>]*?CurrencyCode="${code}"[\\s\\S]*?<${tag}>([\\d\\.,]+)<\\/${tag}>`, 'i');
+                const match = xmlText.match(regex);
+                if (match && match[1]) {
+                    return parseFloat(match[1].replace(',', '.'));
+                }
+            }
+            return null;
         };
 
         const rates = {
-            USD: findRate('USD'),
-            EUR: findRate('EUR'),
-            SDR: findRate('SDR'),
+            // USD ve EUR için önce Efektif Satış, yoksa Döviz Satış
+            USD: findRate('USD', ['BanknoteSelling', 'ForexSelling']),
+            EUR: findRate('EUR', ['BanknoteSelling', 'ForexSelling']),
+            // SDR için XML'de kod XDR'dir ve genelde sadece ForexBuying doludur
+            SDR: findRate('XDR', ['ForexBuying', 'ForexSelling', 'BanknoteSelling']),
             Tarih: xmlText.match(/Tarih_Date[^>]*Tarih="([^"]+)"/)?.[1] || new Date().toLocaleDateString('tr-TR')
         };
 
         return new Response(JSON.stringify(rates), {
-            headers: { 'Content-Type': 'application/json;charset=UTF-8', 'Cache-Control': 'public, max-age=3600' }
+            headers: { 
+                'Content-Type': 'application/json;charset=UTF-8',
+                'Cache-Control': 'public, max-age=3600' 
+            }
         });
     } catch (error) {
         return new Response(JSON.stringify({ error: error.message }), { status: 500 });
