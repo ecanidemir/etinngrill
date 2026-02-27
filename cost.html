@@ -176,24 +176,44 @@
             const currentVal = select.value;
             select.innerHTML = `<option value="">${translations[lang]['select-country']}</option>`;
             
-            const ulkeListesi = Object.keys(ulkeFiyatlariDinamic).sort();
-            ulkeListesi.forEach(ulkeKod => {
-                const opt = document.createElement('option');
-                opt.value = ulkeKod;
-                
+            // 1. AŞAMA: Ülkeleri hem orjinal kodları (fiyat bulmak için) hem de çevirileriyle bir listeye al
+            let ulkeListesi = Object.keys(ulkeFiyatlariDinamic).map(ulkeKod => {
                 let displayKisim = ulkeKod.toLocaleUpperCase('tr-TR'); 
 
-                // Eğer dil EN ise ve eşleşme varsa çeviriyi kullan
+                // Eğer dil EN ise ve eşleşme varsa çevirisini kullan
                 if (lang === 'en' && countryTranslationsEN[displayKisim]) {
                     displayKisim = countryTranslationsEN[displayKisim];
                 }
 
-                opt.textContent = displayKisim;
+                return {
+                    orjinalKod: ulkeKod,
+                    ekrandaGorunen: displayKisim
+                };
+            });
+
+            // 2. AŞAMA: Seçili dilin alfabetik kurallarına göre sırala
+            ulkeListesi.sort((a, b) => {
+                if (lang === 'tr') {
+                    // Türkçe karakter duyarlı sıralama (Örn: Ç, C'den sonra gelir)
+                    return a.ekrandaGorunen.localeCompare(b.ekrandaGorunen, 'tr-TR');
+                } else {
+                    // İngilizce alfabetik sıralama
+                    return a.ekrandaGorunen.localeCompare(b.ekrandaGorunen, 'en-US');
+                }
+            });
+
+            // 3. AŞAMA: Sıralanmış listeyi açılır menüye (dropdown) ekle
+            ulkeListesi.forEach(ulke => {
+                const opt = document.createElement('option');
+                // Arka planda her zaman Türkçe olan orjinal kodu tutuyoruz ki JSON'dan fiyatı bulabilsin
+                opt.value = ulke.orjinalKod; 
+                // Ekrana ise sıralanmış (İngilizce veya Türkçe) ismi yazdırıyoruz
+                opt.textContent = ulke.ekrandaGorunen;
                 select.appendChild(opt);
             });
+            
             select.value = currentVal;
         }
-
         function changeLanguage(lang) {
             Object.keys(translations[lang]).forEach(id => {
                 const el = document.getElementById(id);
@@ -291,5 +311,6 @@
     </script>
 </body>
 </html>
+
 
 
