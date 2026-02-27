@@ -104,12 +104,12 @@
         <div id="bank-info" class="bank-info">
             <h3 id="bank-info-title">Banka Hesap Bilgileri</h3>
             <table>
-                <tr><th id="bank-label">Banka</th><td>Garanti BBVA</td></tr>
-                <tr><th id="swift-label">Swift</th><td>TGBATRISXXX</td></tr>
-                <tr><th id="account-name-label">Hesap Adı</th><td>ENES CANIDEMİR</td></tr>
-                <tr><th id="try-iban-label">TRY IBAN</th><td>TR85 0006 2000 7590 0006 6567 74</td></tr>
-                <tr><th id="usd-iban-label">USD IBAN</th><td>TR47 0006 2000 7590 0009 0816 82</td></tr>
-                <tr><th id="eur-iban-label">EUR IBAN</th><td>TR96 0006 2000 7590 0009 0755 62</td></tr>
+                <tr><th id="bank-label">Banka</th><td>YAPI VE KREDI BANKASI A.S.</td></tr>
+                <tr><th id="swift-label">Swift</th><td>YAPITRISXXX</td></tr>
+                <tr><th id="account-name-label">Hesap Adı</th><td>ÇETİN ÖREN</td></tr>
+                <tr><th id="try-iban-label">TRY IBAN</th><td>TR02 0006 7010 0000 0024 3989 57</td></tr>
+                <tr><th id="usd-iban-label">USD IBAN</th><td>TR46 0006 7010 0000 0015 0696 75</td></tr>
+                <tr><th id="eur-iban-label">EUR IBAN</th><td>TR14 0006 7010 0000 0015 0704 45</td></tr>
             </table>
         </div>
     </div>
@@ -141,8 +141,10 @@
         const modelConfig = { standart: { price: 9000, weight: 11 }, aparatli: { price: 10500, weight: 13 } };
         
         let ulkeFiyatlariDinamic = {};
-        let countryTranslationsEN = {}; // Artık kodun içi temiz, JSON'dan dolacak
+        let countryTranslationsEN = {};
         window.currentRates = null;
+        
+        const hesaplaBtn = document.getElementById('hesapla');
 
         async function getExchangeRates() {
             try {
@@ -155,10 +157,8 @@
             }
         }
 
-        // Sadece PTT Datasını Değil, İngilizce Dosyasını da Fetch'leyen Yapı
         async function getCountryData() {
             try {
-                // Hem Fiyatları hem de İngilizce Çevirileri Paralel Olarak Yükle
                 const [priceRes, transRes] = await Promise.all([
                     fetch('ulkeFiyatlari.json'),
                     fetch('countryTranslations.json')
@@ -176,11 +176,10 @@
             const currentVal = select.value;
             select.innerHTML = `<option value="">${translations[lang]['select-country']}</option>`;
             
-            // 1. AŞAMA: Ülkeleri hem orjinal kodları (fiyat bulmak için) hem de çevirileriyle bir listeye al
+            // 1. Ülkeleri orjinal kodu ve gösterilecek ismiyle objeye çevir
             let ulkeListesi = Object.keys(ulkeFiyatlariDinamic).map(ulkeKod => {
                 let displayKisim = ulkeKod.toLocaleUpperCase('tr-TR'); 
 
-                // Eğer dil EN ise ve eşleşme varsa çevirisini kullan
                 if (lang === 'en' && countryTranslationsEN[displayKisim]) {
                     displayKisim = countryTranslationsEN[displayKisim];
                 }
@@ -191,29 +190,26 @@
                 };
             });
 
-            // 2. AŞAMA: Seçili dilin alfabetik kurallarına göre sırala
+            // 2. Dile göre doğru alfabetik sıralama yap (Ş, Ç, İ dahil)
             ulkeListesi.sort((a, b) => {
                 if (lang === 'tr') {
-                    // Türkçe karakter duyarlı sıralama (Örn: Ç, C'den sonra gelir)
                     return a.ekrandaGorunen.localeCompare(b.ekrandaGorunen, 'tr-TR');
                 } else {
-                    // İngilizce alfabetik sıralama
                     return a.ekrandaGorunen.localeCompare(b.ekrandaGorunen, 'en-US');
                 }
             });
 
-            // 3. AŞAMA: Sıralanmış listeyi açılır menüye (dropdown) ekle
+            // 3. Sıralanmış listeyi ekrana bas
             ulkeListesi.forEach(ulke => {
                 const opt = document.createElement('option');
-                // Arka planda her zaman Türkçe olan orjinal kodu tutuyoruz ki JSON'dan fiyatı bulabilsin
                 opt.value = ulke.orjinalKod; 
-                // Ekrana ise sıralanmış (İngilizce veya Türkçe) ismi yazdırıyoruz
                 opt.textContent = ulke.ekrandaGorunen;
                 select.appendChild(opt);
             });
             
             select.value = currentVal;
         }
+
         function changeLanguage(lang) {
             Object.keys(translations[lang]).forEach(id => {
                 const el = document.getElementById(id);
@@ -230,15 +226,19 @@
         document.getElementById('tr-btn').onclick = () => changeLanguage('tr');
         document.getElementById('en-btn').onclick = () => changeLanguage('en');
 
-        // Sayfa Yüklendiğinde 3 Kaynağı (Kurlar, Fiyatlar, Çeviriler) Getir
         window.onload = async () => {
+            // Güvenlik: Veriler inene kadar butonu kilitle
+            hesaplaBtn.disabled = true;
+            hesaplaBtn.style.opacity = '0.5';
+            hesaplaBtn.style.cursor = 'not-allowed';
+
             const [rates] = await Promise.all([
                 getExchangeRates(), 
                 getCountryData()
             ]);
             
             window.currentRates = rates;
-            changeLanguage('tr'); // Veriler indikten sonra ekranı doldur
+            changeLanguage('tr'); 
             
             document.getElementById('rates-display').innerHTML = `
                 📅 ${rates.Tarih} <br>
@@ -246,17 +246,31 @@
                 <span>EUR: ${rates.EUR.toFixed(2)} ₺</span> | 
                 <span>SDR: ${rates.SDR.toFixed(2)} ₺</span>
             `;
+
+            // Veriler başarıyla indiyse butonu aktif et
+            if (Object.keys(ulkeFiyatlariDinamic).length > 0) {
+                hesaplaBtn.disabled = false;
+                hesaplaBtn.style.opacity = '1';
+                hesaplaBtn.style.cursor = 'pointer';
+            }
         };
 
         const roundTL = (n) => Math.ceil(n / 10) * 10;
         const roundCUR = (n) => Math.ceil(n);
 
-        // Hesaplama Bloğu
-        document.getElementById('hesapla').onclick = async function() {
+        // Parayı 10.500 ₺ şeklinde ayraçlı formatlar
+        const formatMoney = (amount) => {
+            return new Intl.NumberFormat('tr-TR').format(amount);
+        };
+
+        hesaplaBtn.onclick = async function() {
             const ulkeKod = document.getElementById('ulke').value;
             const model = modelConfig[document.getElementById('model').value];
             
-            if (!ulkeKod || !ulkeFiyatlariDinamic[ulkeKod]) { alert('Lütfen ülke seçin!'); return; }
+            if (!ulkeKod || !ulkeFiyatlariDinamic[ulkeKod]) { 
+                alert(document.getElementById('tr-btn').classList.contains('active') ? 'Lütfen bir ülke seçin!' : 'Please select a country!'); 
+                return; 
+            }
 
             document.getElementById('loading').style.display = 'block';
             ['sonuc', 'product-info', 'total-info', 'bank-info'].forEach(id => document.getElementById(id).style.display = 'none');
@@ -293,24 +307,25 @@
             const isTr = document.getElementById('tr-btn').classList.contains('active');
             document.getElementById('sonuc-title').innerHTML = `${isTr ? "Kargo Ücreti" : "Shipping Price"} <span class="shipping-type">${typeMarker}</span>`;
 
-            document.getElementById('tl_sonuc').innerText = tlKargo + " ₺";
-            document.getElementById('eur_sonuc').innerText = eurKargo + " €";
-            document.getElementById('usd_sonuc').innerText = usdKargo + " $";
+            // Formatlanmış Paraları Yazdır
+            document.getElementById('tl_sonuc').innerText = formatMoney(tlKargo) + " ₺";
+            document.getElementById('eur_sonuc').innerText = formatMoney(eurKargo) + " €";
+            document.getElementById('usd_sonuc').innerText = formatMoney(usdKargo) + " $";
 
-            document.getElementById('product_tl').innerText = urunTL + " ₺";
-            document.getElementById('product_eur').innerText = urunEUR + " €";
-            document.getElementById('product_usd').innerText = urunUSD + " $";
+            document.getElementById('product_tl').innerText = formatMoney(urunTL) + " ₺";
+            document.getElementById('product_eur').innerText = formatMoney(urunEUR) + " €";
+            document.getElementById('product_usd').innerText = formatMoney(urunUSD) + " $";
 
-            document.getElementById('total_tl').innerText = (tlKargo + urunTL) + " ₺";
-            document.getElementById('total_eur').innerText = (eurKargo + urunEUR) + " €";
-            document.getElementById('total_usd').innerText = (usdKargo + urunUSD) + " $";
+            document.getElementById('total_tl').innerText = formatMoney(tlKargo + urunTL) + " ₺";
+            document.getElementById('total_eur').innerText = formatMoney(eurKargo + urunEUR) + " €";
+            document.getElementById('total_usd').innerText = formatMoney(usdKargo + urunUSD) + " $";
 
-            document.getElementById('loading').style.display = 'none';
-            ['sonuc', 'product-info', 'total-info', 'bank-info'].forEach(id => document.getElementById(id).style.display = 'block');
+            // Yükleme animasyonu ve sonuçları gösterme efekti
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                ['sonuc', 'product-info', 'total-info', 'bank-info'].forEach(id => document.getElementById(id).style.display = 'block');
+            }, 300);
         };
     </script>
 </body>
 </html>
-
-
-
