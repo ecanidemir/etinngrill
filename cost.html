@@ -55,8 +55,8 @@
         <div class="form-group">
             <label for="model" id="model-label">Model Seçin:</label>
             <select id="model">
-                <option value="standart" data-tr="Standart Mangal (10 KG)" data-en="Standard Grill (10 KG)">Standart Mangal (10 KG)</option>
-                <option value="aparatli" data-tr="Şiş Kebap Aparatlı (11 KG)" data-en="With Shish Kebab Apparatus (11 KG)">Şiş Kebap Aparatlı (11 KG)</option>
+                <option value="standart" data-tr="Standart Mangal" data-en="Standard Grill">Standart Mangal</option>
+                <option value="aparatli" data-tr="Şiş Kebap Aparatlı" data-en="With Shish Kebab Apparatus">Şiş Kebap Aparatlı</option>
             </select>
         </div>
 
@@ -256,7 +256,7 @@
 
             // Hesaplama: SDR İlk + (Kalan KG * SDR Ek) + 200 TL Pay
             const sdrToplam = selectedShipping.ilk + ((model.weight - 1) * selectedShipping.ek);
-            const tlKargo = roundTL((sdrToplam * rates.SDR) + 200);
+            const tlKargo = roundTL(sdrToplam * rates.SDR);
             const eurKargo = roundCUR(tlKargo / rates.EUR);
             const usdKargo = roundCUR(tlKargo / rates.USD);
 
@@ -286,3 +286,4 @@
     </script>
 </body>
 </html>
+
