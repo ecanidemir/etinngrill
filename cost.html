@@ -6,154 +6,35 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Shipping costs outside Türkiye</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        .top-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            gap: 15px;
-        }
-        .language-selector {
-            display: flex;
-            gap: 10px;
-        }
-        .language-btn {
-            padding: 8px 15px;
-            background-color: #e63946;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        .language-btn.active {
-            background-color: #d62828;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
-        }
-        .rates-display {
-            background-color: #fff;
-            padding: 10px 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            font-size: 13px;
-            color: #444;
-            border-left: 4px solid #e63946;
-            line-height: 1.5;
-        }
-        .rates-display span {
-            font-weight: bold;
-            color: #e63946;
-        }
-        .form-container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #e63946;
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 28px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-        #hesapla {
-            width: 100%;
-            padding: 15px;
-            background-color: #e63946;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        #hesapla:hover {
-            background-color: #d62828;
-        }
-        .result-section {
-            margin-top: 25px;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            border-left: 5px solid #e63946;
-            display: none;
-        }
-        .result-section h3 {
-            margin-top: 0;
-            color: #e63946;
-            text-align: center;
-            font-size: 20px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-        .currency-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 15px;
-        }
-        .currency-box {
-            background: white;
-            padding: 15px 10px;
-            border-radius: 5px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f5f5f5; color: #333; }
+        .top-container { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; gap: 15px; }
+        .language-selector { display: flex; gap: 10px; }
+        .language-btn { padding: 8px 15px; background-color: #e63946; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; font-weight: bold; }
+        .language-btn.active { background-color: #d62828; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); }
+        .rates-display { background-color: #fff; padding: 10px 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-size: 13px; color: #444; border-left: 4px solid #e63946; line-height: 1.5; }
+        .rates-display span { font-weight: bold; color: #e63946; }
+        .form-container { background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+        h1 { color: #e63946; text-align: center; margin-bottom: 30px; font-size: 28px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; }
+        select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; box-sizing: border-box; }
+        #hesapla { width: 100%; padding: 15px; background-color: #e63946; color: white; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
+        #hesapla:hover { background-color: #d62828; }
+        .result-section { margin-top: 25px; padding: 20px; background-color: #f8f9fa; border-radius: 8px; border-left: 5px solid #e63946; display: none; }
+        .result-section h3 { margin-top: 0; color: #e63946; text-align: center; font-size: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .currency-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px; }
+        .currency-box { background: white; padding: 15px 10px; border-radius: 5px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .currency-box h4 { margin: 0 0 10px 0; font-size: 14px; color: #666; }
         .currency-box .price { font-size: 18px; font-weight: bold; color: #333; }
-        
         .loading { display: none; text-align: center; margin-top: 20px; }
-        .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #e63946;
-            border-radius: 50%;
-            width: 30px; height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 10px;
-        }
+        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #e63946; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 0 auto 10px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        .bank-info {
-            margin-top: 30px; padding: 20px;
-            background: #fff; border-radius: 8px; border: 1px solid #eee;
-            display: none;
-        }
+        .bank-info { margin-top: 30px; padding: 20px; background: #fff; border-radius: 8px; border: 1px solid #eee; display: none; }
         .bank-info table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         .bank-info th, .bank-info td { padding: 10px; text-align: left; border-bottom: 1px solid #eee; font-size: 14px; }
         .bank-info th { background: #f9f9f9; width: 35%; }
-
-        @media (max-width: 600px) {
-            .top-container { flex-direction: column; align-items: stretch; }
-            .rates-display { text-align: center; font-size: 12px; }
-            .currency-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 22px; }
-        }
+        .shipping-type { color: #e63946; font-size: 14px; font-weight: bold; margin-left: 5px; }
+        @media (max-width: 600px) { .top-container { flex-direction: column; align-items: stretch; } .rates-display { text-align: center; font-size: 12px; } .currency-grid { grid-template-columns: 1fr; } h1 { font-size: 22px; } }
     </style>
 </head>
 <body>
@@ -164,95 +45,68 @@
             <button class="language-btn" id="en-btn">EN</button>
         </div>
         <div class="rates-display" id="rates-display">
-            ⏳ Kurlar alınıyor...
+            ⏳ Veriler alınıyor...
         </div>
     </div>
 
     <div class="form-container">
-        <h1 id="page-title">Shipping costs outside Türkiye</h1>
+        <h1 id="page-title">Türkiye Dışı Kargo Ücretleri</h1>
         
         <div class="form-group">
             <label for="model" id="model-label">Model Seçin:</label>
             <select id="model">
-                <option value="standart" data-tr="Standart Mangal" data-en="Standard Grill">Standart Mangal</option>
-                <option value="aparatli" data-tr="Şiş Kebap Aparatlı" data-en="With Shish Kebab Apparatus">Şiş Kebap Aparatlı</option>
+                <option value="standart" data-tr="Standart Mangal (10 KG)" data-en="Standard Grill (10 KG)">Standart Mangal (10 KG)</option>
+                <option value="aparatli" data-tr="Şiş Kebap Aparatlı (11 KG)" data-en="With Shish Kebab Apparatus (11 KG)">Şiş Kebap Aparatlı (11 KG)</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label for="ulke" id="country-label">Select Country:</label>
+            <label for="ulke" id="country-label">Ülke Seçin:</label>
             <select id="ulke">
-                <option value="">-- Select Country --</option>
+                <option value="">-- Ülke Yükleniyor --</option>
             </select>
         </div>
         
-        <button id="hesapla" data-tr="Hesapla" data-en="Calculate">Calculate</button>
+        <button id="hesapla" data-tr="Hesapla" data-en="Calculate">Hesapla</button>
         
         <div id="loading" class="loading">
             <div class="spinner"></div>
-            <p id="calculating-text">Calculating...</p>
+            <p id="calculating-text">Hesaplanıyor...</p>
         </div>
 
         <div id="sonuc" class="result-section">
-            <h3 id="sonuc-title">Shipping Price</h3>
+            <h3 id="sonuc-title">Kargo Ücreti</h3>
             <div class="currency-grid">
-                <div class="currency-box">
-                    <h4 id="tl-title">TRY</h4>
-                    <div class="price" id="tl_sonuc"></div>
-                </div>
-                <div class="currency-box">
-                    <h4 id="eur-title">EUR</h4>
-                    <div class="price" id="eur_sonuc"></div>
-                </div>
-                <div class="currency-box">
-                    <h4 id="usd-title">USD</h4>
-                    <div class="price" id="usd_sonuc"></div>
-                </div>
+                <div class="currency-box"><h4 id="tl-title">TRY</h4><div class="price" id="tl_sonuc"></div></div>
+                <div class="currency-box"><h4 id="eur-title">EUR</h4><div class="price" id="eur_sonuc"></div></div>
+                <div class="currency-box"><h4 id="usd-title">USD</h4><div class="price" id="usd_sonuc"></div></div>
             </div>
         </div>
 
         <div id="product-info" class="result-section">
-            <h3 id="product-info-title">Product Price</h3>
+            <h3 id="product-info-title">Ürün Fiyatı</h3>
             <div class="currency-grid">
-                <div class="currency-box">
-                    <h4 id="product-tl-title">TRY</h4>
-                    <div class="price" id="product_tl"></div>
-                </div>
-                <div class="currency-box">
-                    <h4 id="product-eur-title">EUR</h4>
-                    <div class="price" id="product_eur"></div>
-                </div>
-                <div class="currency-box">
-                    <h4 id="product-usd-title">USD</h4>
-                    <div class="price" id="product_usd"></div>
-                </div>
+                <div class="currency-box"><h4 id="product-tl-title">TRY</h4><div class="price" id="product_tl"></div></div>
+                <div class="currency-box"><h4 id="product-eur-title">EUR</h4><div class="price" id="product_eur"></div></div>
+                <div class="currency-box"><h4 id="product-usd-title">USD</h4><div class="price" id="product_usd"></div></div>
             </div>
         </div>
 
         <div id="total-info" class="result-section">
-            <h3 id="total-info-title">Total Amount</h3>
+            <h3 id="total-info-title">Toplam Ödenecek Tutar</h3>
             <div class="currency-grid">
-                <div class="currency-box">
-                    <h4 id="total-tl-title">TRY</h4>
-                    <div class="price" id="total_tl"></div>
-                </div>
-                <div class="currency-box">
-                    <h4 id="total-eur-title">EUR</h4>
-                    <div class="price" id="total_eur"></div>
-                </div>
-                <div class="currency-box">
-                    <h4 id="total-usd-title">USD</h4>
-                    <div class="price" id="total_usd"></div>
-                </div>
+                <div class="currency-box"><h4 id="total-tl-title">TRY</h4><div class="price" id="total_tl"></div></div>
+                <div class="currency-box"><h4 id="total-eur-title">EUR</h4><div class="price" id="total_eur"></div></div>
+                <div class="currency-box"><h4 id="total-usd-title">USD</h4><div class="price" id="total_usd"></div></div>
             </div>
         </div>
 
         <div id="bank-info" class="bank-info">
-            <h3 id="bank-info-title">Bank Account Information</h3>
+            <h3 id="bank-info-title">Banka Hesap Bilgileri</h3>
             <table>
-                <tr><th id="bank-label">Bank</th><td>Garanti BBVA</td></tr>
+                <tr><th id="bank-label">Banka</th><td>Garanti BBVA</td></tr>
                 <tr><th id="swift-label">Swift</th><td>TGBATRISXXX</td></tr>
-                <tr><th id="account-name-label">Account Name</th><td>ENES CANIDEMİR</td></tr>
+                <tr><th id="account-name-label">Hesap Adı</th><td>ENES CANIDEMİR</td></tr>
                 <tr><th id="try-iban-label">TRY IBAN</th><td>TR85 0006 2000 7590 0006 6567 74</td></tr>
                 <tr><th id="usd-iban-label">USD IBAN</th><td>TR47 0006 2000 7590 0009 0816 82</td></tr>
                 <tr><th id="eur-iban-label">EUR IBAN</th><td>TR96 0006 2000 7590 0009 0755 62</td></tr>
@@ -263,189 +117,90 @@
     <script>
         const translations = {
             tr: {
-                "page-title": "Türkiye Dışı Kargo Ücretleri",
-                "model-label": "Ürün Seçin:",
-                "country-label": "Ülke Seçin:",
-                "hesapla": "Hesapla",
-                "calculating-text": "Hesaplanıyor...",
-                "tl-title": "Türk Lirası (TL)",
-                "eur-title": "Euro (EUR)",
-                "usd-title": "ABD Doları (USD)",
-                "bank-info-title": "Banka Hesap Bilgileri",
-                "bank-label": "Banka",
-                "swift-label": "Swift",
-                "account-name-label": "Hesap Adı",
-                "try-iban-label": "TRY IBAN",
-                "usd-iban-label": "USD IBAN",
-                "eur-iban-label": "EUR IBAN",
-                "select-country": "-- Ülke Seçin --",
-                "sonuc-title": "Kargo Ücreti",
-                "product-info-title": "Ürün Fiyatı",
-                "total-info-title": "Toplam Ödenecek Tutar"
+                "page-title": "Türkiye Dışı Kargo Ücretleri", "model-label": "Ürün Seçin:", "country-label": "Ülke Seçin:",
+                "hesapla": "Hesapla", "calculating-text": "Hesaplanıyor...", "tl-title": "Türk Lirası (TL)", "eur-title": "Euro (EUR)",
+                "usd-title": "ABD Doları (USD)", "bank-info-title": "Banka Hesap Bilgileri", "bank-label": "Banka",
+                "swift-label": "Swift", "account-name-label": "Hesap Adı", "try-iban-label": "TRY IBAN", "usd-iban-label": "USD IBAN",
+                "eur-iban-label": "EUR IBAN", "select-country": "-- Ülke Seçin --", "sonuc-title": "Kargo Ücreti",
+                "product-info-title": "Ürün Fiyatı", "total-info-title": "Toplam Ödenecek Tutar",
+                "product-tl-title": "Türk Lirası (TL)", "product-eur-title": "Euro (EUR)", "product-usd-title": "ABD Doları (USD)",
+                "total-tl-title": "Türk Lirası (TL)", "total-eur-title": "Euro (EUR)", "total-usd-title": "ABD Doları (USD)"
             },
             en: {
-                "page-title": "International Shipping Costs",
-                "model-label": "Choose Product:",
-                "country-label": "Select Country:",
-                "hesapla": "Calculate",
-                "calculating-text": "Calculating...",
-                "tl-title": "Turkish Lira (TL)",
-                "eur-title": "Euro (EUR)",
-                "usd-title": "US Dollar (USD)",
-                "bank-info-title": "Bank Account Information",
-                "bank-label": "Bank",
-                "swift-label": "Swift",
-                "account-name-label": "Account Name",
-                "try-iban-label": "TRY IBAN",
-                "usd-iban-label": "USD IBAN",
-                "eur-iban-label": "EUR IBAN",
-                "select-country": "-- Select Country --",
-                "sonuc-title": "Shipping Price",
-                "product-info-title": "Product Price",
-                "total-info-title": "Total Amount to Pay"
+                "page-title": "International Shipping Costs", "model-label": "Choose Product:", "country-label": "Select Country:",
+                "hesapla": "Calculate", "calculating-text": "Calculating...", "tl-title": "Turkish Lira (TL)", "eur-title": "Euro (EUR)",
+                "usd-title": "US Dollar (USD)", "bank-info-title": "Bank Account Information", "bank-label": "Bank",
+                "swift-label": "Swift", "account-name-label": "Account Name", "try-iban-label": "TRY IBAN", "usd-iban-label": "USD IBAN",
+                "eur-iban-label": "EUR IBAN", "select-country": "-- Select Country --", "sonuc-title": "Shipping Price",
+                "product-info-title": "Product Price", "total-info-title": "Total Amount to Pay",
+                "product-tl-title": "Turkish Lira (TL)", "product-eur-title": "Euro (EUR)", "product-usd-title": "US Dollar (USD)",
+                "total-tl-title": "Turkish Lira (TL)", "total-eur-title": "Euro (EUR)", "total-usd-title": "US Dollar (USD)"
             }
         };
 
-        const ulkeVerileri = [
-            { kod: "AFGANISTAN", tr: "Afganistan", en: "Afghanistan" },
-            { kod: "ALMANYA", tr: "Almanya", en: "Germany" },
-            { kod: "AMERIKA", tr: "Amerika Birleşik Devletleri", en: "United States" },
-            { kod: "AVUSTURYA", tr: "Avusturya", en: "Austria" },
-            { kod: "AVUSTRALYA", tr: "Avustralya", en: "Australia" },
-            { kod: "AZERBAYCAN", tr: "Azerbaycan", en: "Azerbaijan" },
-            { kod: "BELCIKA", tr: "Belçika", en: "Belgium" },
-            { kod: "BOSNA_HERSEK", tr: "Bosna Hersek", en: "Bosnia and Herzegovina" },
-            { kod: "BULGARISTAN", tr: "Bulgaristan", en: "Bulgaria" },
-            { kod: "CEKYA", tr: "Çekya", en: "Czech Republic" },
-            { kod: "CIN_HALK_CUMHURIYETI", tr: "Çin Halk Cumhuriyeti", en: "China" },
-            { kod: "DANIMARKA", tr: "Danimarka", en: "Denmark" },
-            { kod: "FRANSA", tr: "Fransa", en: "France" },
-            { kod: "GUNEY_KORE", tr: "Güney Kore", en: "South Korea" },
-            { kod: "GURCISTAN", tr: "Gürcistan", en: "Georgia" },
-            { kod: "HOLLANDA", tr: "Hollanda", en: "Netherlands" },
-            { kod: "INGILTERE", tr: "İngiltere", en: "United Kingdom" },
-            { kod: "IRAK", tr: "Irak", en: "Iraq" },
-            { kod: "IRLANDA", tr: "İrlanda", en: "Ireland" },
-            { kod: "ISPANYA", tr: "İspanya", en: "Spain" },
-            { kod: "ISRAIL", tr: "İsrail", en: "Israel" },
-            { kod: "ISVEC", tr: "İsveç", en: "Sweden" },
-            { kod: "ISVICRE", tr: "İsviçre", en: "Switzerland" },
-            { kod: "ITALYA", tr: "İtalya", en: "Italy" },
-            { kod: "JAPONYA", tr: "Japonya", en: "Japan" },
-            { kod: "KANADA", tr: "Kanada", en: "Canada" },
-            { kod: "KATAR", tr: "Katar", en: "Qatar" },
-            { kod: "KUZEY_KIBRIS", tr: "Kuzey Kıbrıs Türk Cumhuriyeti", en: "Northern Cyprus" },
-            { kod: "MISIR", tr: "Mısır", en: "Egypt" },
-            { kod: "NORVEC", tr: "Norveç", en: "Norway" },
-            { kod: "POLONYA", tr: "Polonya", en: "Poland" },
-            { kod: "PORTEKIZ", tr: "Portekiz", en: "Portugal" },
-            { kod: "ROMANYA", tr: "Romanya", en: "Romania" },
-            { kod: "RUSYA", tr: "Rusya", en: "Russia" },
-            { kod: "SUUD_ARABISTAN", tr: "Suudi Arabistan", en: "Saudi Arabia" },
-            { kod: "UKRAYNA", tr: "Ukrayna", en: "Ukraine" },
-            { kod: "YUNANISTAN", tr: "Yunanistan", en: "Greece" }
-        ];
-
-        const ulkeFiyatlari = {
-            "AFGANISTAN": { ilk1kg: 22.98, sonrakiHer1kg: 6.97 },
-            "ALMANYA": { ilk1kg: 13.82, sonrakiHer1kg: 2.52 },
-            "AMERIKA": { ilk1kg: 23.48, sonrakiHer1kg: 11.95 },
-            "AVUSTURYA": { ilk1kg: 17.15, sonrakiHer1kg: 2.55 },
-            "AVUSTRALYA": { ilk1kg: 36.48, sonrakiHer1kg: 23.72 },
-            "AZERBAYCAN": { ilk1kg: 8.23, sonrakiHer1kg: 3.04 },
-            "BELCIKA": { ilk1kg: 21.81, sonrakiHer1kg: 3.42 },
-            "BOSNA_HERSEK": { ilk1kg: 14.72, sonrakiHer1kg: 2.77 },
-            "BULGARISTAN": { ilk1kg: 11.82, sonrakiHer1kg: 1.96 },
-            "CEKYA": { ilk1kg: 12.68, sonrakiHer1kg: 2.87 },
-            "CIN_HALK_CUMHURIYETI": { ilk1kg: 18.63, sonrakiHer1kg: 8.36 },
-            "DANIMARKA": { ilk1kg: 20.98, sonrakiHer1kg: 4.78 },
-            "FRANSA": { ilk1kg: 20.32, sonrakiHer1kg: 4.37 },
-            "GUNEY_KORE": { ilk1kg: 20.15, sonrakiHer1kg: 7.85 },
-            "GURCISTAN": { ilk1kg: 20.33, sonrakiHer1kg: 4.73 },
-            "HOLLANDA": { ilk1kg: 16.32, sonrakiHer1kg: 4.44 },
-            "INGILTERE": { ilk1kg: 18.34, sonrakiHer1kg: 7.62 },
-            "IRAK": { ilk1kg: 11.82, sonrakiHer1kg: 3.45 },
-            "IRLANDA": { ilk1kg: 16.95, sonrakiHer1kg: 5.76 },
-            "ISPANYA": { ilk1kg: 20.15, sonrakiHer1kg: 5.90 },
-            "ISRAIL": { ilk1kg: 26.11, sonrakiHer1kg: 12.24 },
-            "ISVEC": { ilk1kg: 26.59, sonrakiHer1kg: 6.85 },
-            "ISVICRE": { ilk1kg: 17.36, sonrakiHer1kg: 4.68 },
-            "ITALYA": { ilk1kg: 17.97, sonrakiHer1kg: 4.86 },
-            "JAPONYA": { ilk1kg: 21.06, sonrakiHer1kg: 9.18 },
-            "KANADA": { ilk1kg: 25.45, sonrakiHer1kg: 11.29 },
-            "KATAR": { ilk1kg: 12.65, sonrakiHer1kg: 3.67 },
-            "KUZEY_KIBRIS": { ilk1kg: 4.71, sonrakiHer1kg: 1.39 },
-            "MISIR": { ilk1kg: 13.74, sonrakiHer1kg: 5.24 },
-            "NORVEC": { ilk1kg: 27.66, sonrakiHer1kg: 6.68 },
-            "POLONYA": { ilk1kg: 20.89, sonrakiHer1kg: 5.87 },
-            "PORTEKIZ": { ilk1kg: 20.59, sonrakiHer1kg: 6.15 },
-            "ROMANYA": { ilk1kg: 23.04, sonrakiHer1kg: 3.76 },
-            "RUSYA": { ilk1kg: 15.96, sonrakiHer1kg: 5.54 },
-            "SUUD_ARABISTAN": { ilk1kg: 12.33, sonrakiHer1kg: 4.98 },
-            "UKRAYNA": { ilk1kg: 22.81, sonrakiHer1kg: 4.86 },
-            "YUNANISTAN": { ilk1kg: 14.40, sonrakiHer1kg: 3.08 }
-        };
-
-        const modelConfig = {
-            standart: { price: 9000, weight: 10 },
-            aparatli: { price: 10500, weight: 11 }
-        };
-
+        const modelConfig = { standart: { price: 9000, weight: 10 }, aparatli: { price: 10500, weight: 11 } };
+        
+        let ulkeFiyatlariDinamic = {};
         window.currentRates = null;
 
+        // Ülke isimlerini düzgün harf formatına çevirme (Örn: ALMANYA -> Almanya)
+        function toTitleCase(str) {
+            return str.replace(/\w\S*/g, function(txt){
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            }).replace('Ve', 've');
+        }
+
+        // Kurları Çek
         async function getExchangeRates() {
-            const ratesDisplay = document.getElementById('rates-display');
             try {
-                const response = await fetch('/api/rates');
-                if (!response.ok) throw new Error('API Hatası');
+                const response = await fetch('/api/rates'); // Senin mevcut kur API'n
                 const rates = await response.json();
                 if (!rates.SDR) rates.SDR = 60.31; 
-
-                ratesDisplay.innerHTML = `
-                    📅 ${rates.Tarih} <br>
-                    <span>USD: ${rates.USD.toFixed(2)} ₺</span> | 
-                    <span>EUR: ${rates.EUR.toFixed(2)} ₺</span> | 
-                    <span>SDR: ${rates.SDR.toFixed(2)} ₺</span>
-                `;
-                ratesDisplay.style.display = 'block';
                 return rates;
             } catch (error) {
-                const fallback = { USD: 43.94, EUR: 51.88, SDR: 60.31, Tarih: "Sabit Kur" };
-                ratesDisplay.innerHTML = `⚠️ Güncel kur alınamadı.`;
-                ratesDisplay.style.display = 'block';
-                return fallback;
+                return { USD: 43.94, EUR: 51.88, SDR: 60.31, Tarih: "Sabit Kur" };
             }
         }
 
-        const roundTL = (n) => Math.ceil(n / 10) * 10;
-        const roundCUR = (n) => Math.ceil(n);
+        // PTT JSON Verisini Çek
+        async function getPTTData() {
+            try {
+                const response = await fetch('ulkeFiyatlari.json'); // Python'un ürettiği dosya
+                ulkeFiyatlariDinamic = await response.json();
+                populateDropdown('tr'); // Veri gelince dropdown'u doldur
+            } catch (error) {
+                console.error("PTT fiyatları yüklenemedi", error);
+                document.getElementById('ulke').innerHTML = `<option value="">⚠️ Veri Yüklenemedi</option>`;
+            }
+        }
+
+        function populateDropdown(lang) {
+            const select = document.getElementById('ulke');
+            const currentVal = select.value;
+            select.innerHTML = `<option value="">${translations[lang]['select-country']}</option>`;
+            
+            const ulkeListesi = Object.keys(ulkeFiyatlariDinamic).sort();
+            ulkeListesi.forEach(ulkeKod => {
+                const opt = document.createElement('option');
+                opt.value = ulkeKod;
+                // JSON'daki büyük harfli ismi görsel olarak düzelt
+                opt.textContent = toTitleCase(ulkeKod);
+                select.appendChild(opt);
+            });
+            select.value = currentVal;
+        }
 
         function changeLanguage(lang) {
             Object.keys(translations[lang]).forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.innerHTML = translations[lang][id];
             });
-            
-            // Model isimlerini çevir
             const modelSelect = document.getElementById('model');
-            Array.from(modelSelect.options).forEach(opt => {
-                opt.textContent = opt.getAttribute(`data-${lang}`);
-            });
-
-            const select = document.getElementById('ulke');
-            const currentVal = select.value;
-            select.innerHTML = `<option value="">${translations[lang]['select-country']}</option>`;
-            
-            ulkeVerileri.sort((a,b) => a[lang].localeCompare(b[lang])).forEach(u => {
-                const opt = document.createElement('option');
-                opt.value = u.kod;
-                opt.textContent = u[lang];
-                select.appendChild(opt);
-            });
-            select.value = currentVal;
-
+            Array.from(modelSelect.options).forEach(opt => { opt.textContent = opt.getAttribute(`data-${lang}`); });
             document.querySelectorAll('.language-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(`${lang}-btn`).classList.add('active');
+            
+            if(Object.keys(ulkeFiyatlariDinamic).length > 0) populateDropdown(lang);
         }
 
         document.getElementById('tr-btn').onclick = () => changeLanguage('tr');
@@ -453,36 +208,66 @@
 
         window.onload = async () => {
             changeLanguage('tr');
-            window.currentRates = await getExchangeRates();
+            
+            // Kurları ve PTT verilerini eşzamanlı çek
+            const [rates, _] = await Promise.all([getExchangeRates(), getPTTData()]);
+            window.currentRates = rates;
+            
+            document.getElementById('rates-display').innerHTML = `
+                📅 ${rates.Tarih} <br>
+                <span>USD: ${rates.USD.toFixed(2)} ₺</span> | 
+                <span>EUR: ${rates.EUR.toFixed(2)} ₺</span> | 
+                <span>SDR: ${rates.SDR.toFixed(2)} ₺</span>
+            `;
         };
+
+        const roundTL = (n) => Math.ceil(n / 10) * 10;
+        const roundCUR = (n) => Math.ceil(n);
 
         document.getElementById('hesapla').onclick = async function() {
             const ulkeKod = document.getElementById('ulke').value;
-            if (!ulkeKod) { alert('Lütfen ülke seçin!'); return; }
-
-            const selectedModelKey = document.getElementById('model').value;
-            const model = modelConfig[selectedModelKey];
+            const model = modelConfig[document.getElementById('model').value];
+            
+            if (!ulkeKod || !ulkeFiyatlariDinamic[ulkeKod]) { alert('Lütfen ülke seçin!'); return; }
 
             document.getElementById('loading').style.display = 'block';
             ['sonuc', 'product-info', 'total-info', 'bank-info'].forEach(id => document.getElementById(id).style.display = 'none');
 
-            if (!window.currentRates) window.currentRates = await getExchangeRates();
             const rates = window.currentRates;
-            const f = ulkeFiyatlari[ulkeKod];
+            const countryData = ulkeFiyatlariDinamic[ulkeKod];
 
-            // 1. Kargo Hesaplama (Dinamik Ağırlık + 200₺ Güvenlik Payı)
-            // SDR Formülü: İlk 1kg + (Toplam KG - 1) * Sonraki birimler
-            const sdrToplam = f.ilk1kg + ((model.weight - 1) * f.sonrakiHer1kg);
+            // --- YÜZEY VE UÇAK KARŞILAŞTIRMA MANTIĞI ---
+            let selectedShipping = null;
+            let typeMarker = "";
+
+            if (countryData.ucak && countryData.ucak.ilk) {
+                selectedShipping = countryData.ucak;
+                typeMarker = "(U)";
+            } else if (countryData.yuzey && countryData.yuzey.ilk) {
+                selectedShipping = countryData.yuzey;
+                typeMarker = "(Y)";
+            }
+
+            if (!selectedShipping) {
+                alert("Kargo verisi bulunamadı!");
+                document.getElementById('loading').style.display = 'none';
+                return;
+            }
+
+            // Hesaplama: SDR İlk + (Kalan KG * SDR Ek) + 200 TL Pay
+            const sdrToplam = selectedShipping.ilk + ((model.weight - 1) * selectedShipping.ek);
             const tlKargo = roundTL((sdrToplam * rates.SDR) + 200);
             const eurKargo = roundCUR(tlKargo / rates.EUR);
             const usdKargo = roundCUR(tlKargo / rates.USD);
 
-            // 2. Ürün Fiyatı (Modele göre 9000 veya 10500)
             const urunTL = model.price;
             const urunEUR = roundCUR(urunTL / rates.EUR);
             const urunUSD = roundCUR(urunTL / rates.USD);
 
-            // Sonuçları Yazdır
+            // Başlığa U/Y Ekleme
+            const isTr = document.getElementById('tr-btn').classList.contains('active');
+            document.getElementById('sonuc-title').innerHTML = `${isTr ? "Kargo Ücreti" : "Shipping Price"} <span class="shipping-type">${typeMarker}</span>`;
+
             document.getElementById('tl_sonuc').innerText = tlKargo + " ₺";
             document.getElementById('eur_sonuc').innerText = eurKargo + " €";
             document.getElementById('usd_sonuc').innerText = usdKargo + " $";
@@ -501,4 +286,3 @@
     </script>
 </body>
 </html>
-
