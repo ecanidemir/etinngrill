@@ -1,0 +1,2008 @@
+{
+    "AFGANİSTAN": {
+        "yuzey": {
+            "ilk": 21.42,
+            "ek": 5.41
+        },
+        "ucak": {
+            "ilk": 22.98,
+            "ek": 6.97
+        }
+    },
+    "ALAND ADALARI": {
+        "yuzey": {
+            "ilk": 8.64,
+            "ek": 2.84
+        },
+        "ucak": null
+    },
+    "ALMANYA": {
+        "yuzey": {
+            "ilk": 13.31,
+            "ek": 2.01
+        },
+        "ucak": {
+            "ilk": 13.82,
+            "ek": 2.52
+        }
+    },
+    "AMERİKA BİRLEŞİK DEVLETLERİ": {
+        "yuzey": {
+            "ilk": 18.58,
+            "ek": 8.7
+        },
+        "ucak": {
+            "ilk": 23.48,
+            "ek": 11.95
+        }
+    },
+    "AMERİKAN SAMOASI": {
+        "yuzey": {
+            "ilk": 18.58,
+            "ek": 8.7
+        },
+        "ucak": null
+    },
+    "ANDORRA": {
+        "yuzey": {
+            "ilk": 18.94,
+            "ek": 2.98
+        },
+        "ucak": {
+            "ilk": 20.32,
+            "ek": 4.37
+        }
+    },
+    "ANGOLA": {
+        "yuzey": {
+            "ilk": 24.92,
+            "ek": 9.71
+        },
+        "ucak": null
+    },
+    "ANGUİLLA": {
+        "yuzey": {
+            "ilk": 22.7,
+            "ek": 11.66
+        },
+        "ucak": null
+    },
+    "ANTİGUA BARBUDA": {
+        "yuzey": {
+            "ilk": 23.77,
+            "ek": 9.98
+        },
+        "ucak": null
+    },
+    "ARJANTİN": {
+        "yuzey": {
+            "ilk": 22.81,
+            "ek": 10.42
+        },
+        "ucak": {
+            "ilk": 25.94,
+            "ek": 13.55
+        }
+    },
+    "ARNAVUTLUK": {
+        "yuzey": {
+            "ilk": 14.62,
+            "ek": 1.96
+        },
+        "ucak": {
+            "ilk": 14.71,
+            "ek": 2.04
+        }
+    },
+    "ARUBA": {
+        "yuzey": {
+            "ilk": 24.79,
+            "ek": 11.42
+        },
+        "ucak": null
+    },
+    "ASANSİYON": {
+        "yuzey": {
+            "ilk": 22.81,
+            "ek": 15.2
+        },
+        "ucak": null
+    },
+    "AVUSTRALYA": {
+        "yuzey": {
+            "ilk": 21.56,
+            "ek": 8.79
+        },
+        "ucak": {
+            "ilk": 36.48,
+            "ek": 23.72
+        }
+    },
+    "AVUSTURYA": {
+        "yuzey": {
+            "ilk": 17.07,
+            "ek": 2.47
+        },
+        "ucak": {
+            "ilk": 17.15,
+            "ek": 2.55
+        }
+    },
+    "AZERBAYCAN": {
+        "yuzey": {
+            "ilk": 8.06,
+            "ek": 2.87
+        },
+        "ucak": {
+            "ilk": 8.23,
+            "ek": 3.04
+        }
+    },
+    "AZOR VE MADER ADALARI": {
+        "yuzey": {
+            "ilk": 23.38,
+            "ek": 4.76
+        },
+        "ucak": null
+    },
+    "BAHAMALAR": {
+        "yuzey": {
+            "ilk": 24.77,
+            "ek": 10.54
+        },
+        "ucak": null
+    },
+    "BAHREYN": {
+        "yuzey": {
+            "ilk": 13.01,
+            "ek": 3.52
+        },
+        "ucak": {
+            "ilk": 14.13,
+            "ek": 4.64
+        }
+    },
+    "BANGLADEŞ": {
+        "yuzey": {
+            "ilk": 12.82,
+            "ek": 4.76
+        },
+        "ucak": {
+            "ilk": 15.79,
+            "ek": 7.72
+        }
+    },
+    "BARBADOS": {
+        "yuzey": {
+            "ilk": 25.13,
+            "ek": 10.3
+        },
+        "ucak": null
+    },
+    "BATI SAMOA": {
+        "yuzey": {
+            "ilk": 23.1,
+            "ek": 14.86
+        },
+        "ucak": null
+    },
+    "BELARUS": {
+        "yuzey": {
+            "ilk": 12.6,
+            "ek": 4.79
+        },
+        "ucak": {
+            "ilk": 13.84,
+            "ek": 6.02
+        }
+    },
+    "BELÇİKA": {
+        "yuzey": {
+            "ilk": 21.01,
+            "ek": 2.62
+        },
+        "ucak": {
+            "ilk": 21.81,
+            "ek": 3.42
+        }
+    },
+    "BELİZE": {
+        "yuzey": {
+            "ilk": 30.11,
+            "ek": 11.99
+        },
+        "ucak": null
+    },
+    "BENİN": {
+        "yuzey": {
+            "ilk": 23.26,
+            "ek": 7.8
+        },
+        "ucak": null
+    },
+    "BERMUDA": {
+        "yuzey": {
+            "ilk": 27.51,
+            "ek": 9.4
+        },
+        "ucak": null
+    },
+    "BİRLEŞİK ARAP EMİRLİKLERİ": {
+        "yuzey": {
+            "ilk": 11.9,
+            "ek": 3.28
+        },
+        "ucak": {
+            "ilk": 15.27,
+            "ek": 6.65
+        }
+    },
+    "BONARYA VE ST EUSTATIUS": {
+        "yuzey": {
+            "ilk": 26.66,
+            "ek": 12.0
+        },
+        "ucak": null
+    },
+    "BOLİVYA": {
+        "yuzey": {
+            "ilk": 33.68,
+            "ek": 14.18
+        },
+        "ucak": null
+    },
+    "BOSNA HERSEK": {
+        "yuzey": {
+            "ilk": 14.47,
+            "ek": 2.5
+        },
+        "ucak": {
+            "ilk": 14.72,
+            "ek": 2.77
+        }
+    },
+    "BOTSVANA": {
+        "yuzey": {
+            "ilk": 23.85,
+            "ek": 10.15
+        },
+        "ucak": null
+    },
+    "BREZİLYA": {
+        "yuzey": {
+            "ilk": 27.81,
+            "ek": 13.29
+        },
+        "ucak": {
+            "ilk": 28.14,
+            "ek": 13.62
+        }
+    },
+    "BRUNEİ": {
+        "yuzey": {
+            "ilk": 18.26,
+            "ek": 9.3
+        },
+        "ucak": null
+    },
+    "BULGARİSTAN": {
+        "yuzey": {
+            "ilk": 11.65,
+            "ek": 1.77
+        },
+        "ucak": {
+            "ilk": 11.82,
+            "ek": 1.96
+        }
+    },
+    "BURKİNA FASO": {
+        "yuzey": {
+            "ilk": 24.87,
+            "ek": 8.48
+        },
+        "ucak": null
+    },
+    "BURUNDİ": {
+        "yuzey": {
+            "ilk": 31.94,
+            "ek": 9.89
+        },
+        "ucak": null
+    },
+    "BUTAN": {
+        "yuzey": {
+            "ilk": 21.71,
+            "ek": 6.92
+        },
+        "ucak": null
+    },
+    "CAYMAN ADALARI": {
+        "yuzey": {
+            "ilk": 30.46,
+            "ek": 12.63
+        },
+        "ucak": null
+    },
+    "CEBELİTARIK": {
+        "yuzey": {
+            "ilk": 12.14,
+            "ek": 3.88
+        },
+        "ucak": {
+            "ilk": 14.59,
+            "ek": 6.32
+        }
+    },
+    "CEZAYİR": {
+        "yuzey": {
+            "ilk": 13.86,
+            "ek": 3.69
+        },
+        "ucak": {
+            "ilk": 13.94,
+            "ek": 3.77
+        }
+    },
+    "CİBUTİ": {
+        "yuzey": {
+            "ilk": 14.2,
+            "ek": 4.9
+        },
+        "ucak": {
+            "ilk": 15.33,
+            "ek": 6.02
+        }
+    },
+    "CURAÇAO (HOLLANDA ANTİLLERİ)": {
+        "yuzey": {
+            "ilk": 26.66,
+            "ek": 12.0
+        },
+        "ucak": null
+    },
+    "ÇAD": {
+        "yuzey": {
+            "ilk": 22.95,
+            "ek": 7.23
+        },
+        "ucak": null
+    },
+    "ÇEKYA": {
+        "yuzey": {
+            "ilk": 12.43,
+            "ek": 2.62
+        },
+        "ucak": {
+            "ilk": 12.68,
+            "ek": 2.87
+        }
+    },
+    "ÇİN HALK CUMHURİYETİ": {
+        "yuzey": {
+            "ilk": 15.81,
+            "ek": 5.54
+        },
+        "ucak": {
+            "ilk": 18.63,
+            "ek": 8.36
+        }
+    },
+    "DANİMARKA": {
+        "yuzey": {
+            "ilk": 19.28,
+            "ek": 3.08
+        },
+        "ucak": {
+            "ilk": 20.98,
+            "ek": 4.78
+        }
+    },
+    "DOĞU TİMOR (TİMOR LESTE)": {
+        "yuzey": {
+            "ilk": 21.69,
+            "ek": 13.97
+        },
+        "ucak": null
+    },
+    "DOMİNİK CUMHURİYETİ": {
+        "yuzey": {
+            "ilk": 24.92,
+            "ek": 10.54
+        },
+        "ucak": null
+    },
+    "DOMİNİKA": {
+        "yuzey": {
+            "ilk": 21.39,
+            "ek": 10.18
+        },
+        "ucak": null
+    },
+    "EKVATOR": {
+        "yuzey": {
+            "ilk": 18.87,
+            "ek": 7.21
+        },
+        "ucak": null
+    },
+    "EKVATOR GİNESİ": {
+        "yuzey": {
+            "ilk": 21.71,
+            "ek": 7.94
+        },
+        "ucak": null
+    },
+    "EL SALVADOR": {
+        "yuzey": {
+            "ilk": 28.71,
+            "ek": 12.78
+        },
+        "ucak": null
+    },
+    "ENDONEZYA": {
+        "yuzey": {
+            "ilk": 19.13,
+            "ek": 7.99
+        },
+        "ucak": {
+            "ilk": 21.68,
+            "ek": 10.54
+        }
+    },
+    "ERİTRE": {
+        "yuzey": {
+            "ilk": 19.31,
+            "ek": 6.73
+        },
+        "ucak": {
+            "ilk": 17.2,
+            "ek": 6.21
+        }
+    },
+    "ERMENİSTAN": {
+        "yuzey": null,
+        "ucak": {
+            "ilk": 28.05,
+            "ek": 8.86
+        }
+    },
+    "ESTONYA": {
+        "yuzey": {
+            "ilk": 25.42,
+            "ek": 4.18
+        },
+        "ucak": {
+            "ilk": 19.41,
+            "ek": 6.15
+        }
+    },
+    "ESVATİNİ-SVAZİLAND": {
+        "yuzey": {
+            "ilk": 17.94,
+            "ek": 9.76
+        },
+        "ucak": null
+    },
+    "ETİYOPYA": {
+        "yuzey": {
+            "ilk": 13.84,
+            "ek": 6.95
+        },
+        "ucak": {
+            "ilk": 14.18,
+            "ek": 7.31
+        }
+    },
+    "FALKLAND ADALARI": {
+        "yuzey": {
+            "ilk": 27.15,
+            "ek": 17.14
+        },
+        "ucak": null
+    },
+    "FAS": {
+        "yuzey": {
+            "ilk": 15.64,
+            "ek": 4.64
+        },
+        "ucak": {
+            "ilk": 15.9,
+            "ek": 4.91
+        }
+    },
+    "FİJİ": {
+        "yuzey": {
+            "ilk": 21.45,
+            "ek": 11.7
+        },
+        "ucak": null
+    },
+    "FİLDİŞİ SAHİLİ": {
+        "yuzey": {
+            "ilk": 27.25,
+            "ek": 11.49
+        },
+        "ucak": {
+            "ilk": 17.77,
+            "ek": 8.26
+        }
+    },
+    "FİLİPİNLER": {
+        "yuzey": {
+            "ilk": 12.85,
+            "ek": 6.1
+        },
+        "ucak": {
+            "ilk": 15.42,
+            "ek": 8.67
+        }
+    },
+    "FİLİSTİN": {
+        "yuzey": {
+            "ilk": 20.03,
+            "ek": 12.75
+        },
+        "ucak": {
+            "ilk": 20.03,
+            "ek": 12.75
+        }
+    },
+    "FİNLANDİYA": {
+        "yuzey": {
+            "ilk": 22.63,
+            "ek": 3.47
+        },
+        "ucak": {
+            "ilk": 25.08,
+            "ek": 5.93
+        }
+    },
+    "FRANSA": {
+        "yuzey": {
+            "ilk": 18.94,
+            "ek": 2.98
+        },
+        "ucak": {
+            "ilk": 20.32,
+            "ek": 4.37
+        }
+    },
+    "FRANSIZ GUYANASI": {
+        "yuzey": {
+            "ilk": 31.45,
+            "ek": 10.29
+        },
+        "ucak": null
+    },
+    "FRANSIZ POLİNEZYASI": {
+        "yuzey": {
+            "ilk": 40.63,
+            "ek": 19.96
+        },
+        "ucak": null
+    },
+    "GABON": {
+        "yuzey": {
+            "ilk": 25.99,
+            "ek": 8.69
+        },
+        "ucak": null
+    },
+    "GAMBİYA": {
+        "yuzey": {
+            "ilk": 25.62,
+            "ek": 7.24
+        },
+        "ucak": null
+    },
+    "GANA": {
+        "yuzey": {
+            "ilk": 23.38,
+            "ek": 6.02
+        },
+        "ucak": {
+            "ilk": 24.67,
+            "ek": 7.33
+        }
+    },
+    "GİNE": {
+        "yuzey": {
+            "ilk": 24.33,
+            "ek": 7.99
+        },
+        "ucak": null
+    },
+    "GİNE BİSSAU": {
+        "yuzey": {
+            "ilk": 28.65,
+            "ek": 7.4
+        },
+        "ucak": null
+    },
+    "GRENADA": {
+        "yuzey": {
+            "ilk": 25.91,
+            "ek": 10.54
+        },
+        "ucak": null
+    },
+    "GRÖNLAND": {
+        "yuzey": null,
+        "ucak": {
+            "ilk": 42.89,
+            "ek": 9.54
+        }
+    },
+    "GUADELOUPE": {
+        "yuzey": {
+            "ilk": 31.54,
+            "ek": 10.35
+        },
+        "ucak": null
+    },
+    "GUAM": {
+        "yuzey": {
+            "ilk": 18.58,
+            "ek": 8.7
+        },
+        "ucak": null
+    },
+    "GUATEMALA": {
+        "yuzey": {
+            "ilk": 26.5,
+            "ek": 12.38
+        },
+        "ucak": {
+            "ilk": 27.01,
+            "ek": 12.89
+        }
+    },
+    "GUERNSEY": {
+        "yuzey": {
+            "ilk": 15.47,
+            "ek": 4.74
+        },
+        "ucak": null
+    },
+    "GUYANA": {
+        "yuzey": {
+            "ilk": 29.1,
+            "ek": 11.22
+        },
+        "ucak": null
+    },
+    "GÜNEY AFRİKA CUMHURİYETİ": {
+        "yuzey": {
+            "ilk": 20.94,
+            "ek": 8.02
+        },
+        "ucak": {
+            "ilk": 25.02,
+            "ek": 12.09
+        }
+    },
+    "GÜNEY KORE (KORE CUMHURİYETİ)": {
+        "yuzey": {
+            "ilk": 16.54,
+            "ek": 4.25
+        },
+        "ucak": {
+            "ilk": 20.15,
+            "ek": 7.85
+        }
+    },
+    "GÜRCİSTAN": {
+        "yuzey": {
+            "ilk": 4.51,
+            "ek": 3.67
+        },
+        "ucak": {
+            "ilk": 20.33,
+            "ek": 4.73
+        }
+    },
+    "HAİTİ": {
+        "yuzey": {
+            "ilk": 25.31,
+            "ek": 10.78
+        },
+        "ucak": {
+            "ilk": 25.84,
+            "ek": 11.29
+        }
+    },
+    "HIRVATİSTAN": {
+        "yuzey": {
+            "ilk": 11.41,
+            "ek": 2.3
+        },
+        "ucak": {
+            "ilk": 11.68,
+            "ek": 2.55
+        }
+    },
+    "HİNDİSTAN": {
+        "yuzey": {
+            "ilk": 17.82,
+            "ek": 3.89
+        },
+        "ucak": {
+            "ilk": 21.69,
+            "ek": 7.79
+        }
+    },
+    "HOLLANDA": {
+        "yuzey": {
+            "ilk": 14.76,
+            "ek": 2.87
+        },
+        "ucak": {
+            "ilk": 16.32,
+            "ek": 4.44
+        }
+    },
+    "HONDURAS": {
+        "yuzey": {
+            "ilk": 27.63,
+            "ek": 12.6
+        },
+        "ucak": null
+    },
+    "HONG KONG": {
+        "yuzey": {
+            "ilk": 20.81,
+            "ek": 4.74
+        },
+        "ucak": {
+            "ilk": 23.87,
+            "ek": 7.82
+        }
+    },
+    "IRAK": {
+        "yuzey": {
+            "ilk": 11.75,
+            "ek": 3.38
+        },
+        "ucak": {
+            "ilk": 11.82,
+            "ek": 3.45
+        }
+    },
+    "İNGİLTERE (İSKOÇYA, KUZEY İRLANDA, GALLER)": {
+        "yuzey": {
+            "ilk": 15.47,
+            "ek": 4.74
+        },
+        "ucak": {
+            "ilk": 18.34,
+            "ek": 7.62
+        }
+    },
+    "İRAN": {
+        "yuzey": {
+            "ilk": 19.09,
+            "ek": 2.11
+        },
+        "ucak": {
+            "ilk": 24.67,
+            "ek": 7.68
+        }
+    },
+    "İRLANDA": {
+        "yuzey": {
+            "ilk": 14.81,
+            "ek": 3.62
+        },
+        "ucak": {
+            "ilk": 16.95,
+            "ek": 5.76
+        }
+    },
+    "İSPANYA": {
+        "yuzey": {
+            "ilk": 17.71,
+            "ek": 3.47
+        },
+        "ucak": {
+            "ilk": 20.15,
+            "ek": 5.9
+        }
+    },
+    "İSRAİL": {
+        "yuzey": {
+            "ilk": 26.11,
+            "ek": 12.24
+        },
+        "ucak": {
+            "ilk": 26.11,
+            "ek": 12.24
+        }
+    },
+    "İSVEÇ": {
+        "yuzey": {
+            "ilk": 24.17,
+            "ek": 4.42
+        },
+        "ucak": {
+            "ilk": 26.59,
+            "ek": 6.85
+        }
+    },
+    "İSVİÇRE": {
+        "yuzey": {
+            "ilk": 15.64,
+            "ek": 2.96
+        },
+        "ucak": {
+            "ilk": 17.36,
+            "ek": 4.68
+        }
+    },
+    "İTALYA": {
+        "yuzey": {
+            "ilk": 16.32,
+            "ek": 3.2
+        },
+        "ucak": {
+            "ilk": 17.97,
+            "ek": 4.86
+        }
+    },
+    "İZLANDA": {
+        "yuzey": {
+            "ilk": 30.82,
+            "ek": 4.27
+        },
+        "ucak": {
+            "ilk": 29.85,
+            "ek": 11.29
+        }
+    },
+    "JAMAİKA": {
+        "yuzey": {
+            "ilk": 29.17,
+            "ek": 11.87
+        },
+        "ucak": null
+    },
+    "JAPONYA": {
+        "yuzey": {
+            "ilk": 15.78,
+            "ek": 3.89
+        },
+        "ucak": {
+            "ilk": 21.06,
+            "ek": 9.18
+        }
+    },
+    "JERSEY": {
+        "yuzey": {
+            "ilk": 15.47,
+            "ek": 4.74
+        },
+        "ucak": null
+    },
+    "KAMBOÇYA": {
+        "yuzey": {
+            "ilk": 11.65,
+            "ek": 3.91
+        },
+        "ucak": {
+            "ilk": 11.65,
+            "ek": 3.91
+        }
+    },
+    "KAMERUN": {
+        "yuzey": {
+            "ilk": 24.24,
+            "ek": 8.21
+        },
+        "ucak": null
+    },
+    "KANADA": {
+        "yuzey": {
+            "ilk": 21.93,
+            "ek": 7.75
+        },
+        "ucak": {
+            "ilk": 25.45,
+            "ek": 11.29
+        }
+    },
+    "KANARYA ADALARI": {
+        "yuzey": {
+            "ilk": 17.71,
+            "ek": 3.47
+        },
+        "ucak": {
+            "ilk": 20.15,
+            "ek": 5.9
+        }
+    },
+    "KARADAĞ": {
+        "yuzey": {
+            "ilk": 15.98,
+            "ek": 1.9
+        },
+        "ucak": {
+            "ilk": 16.24,
+            "ek": 2.16
+        }
+    },
+    "KATAR": {
+        "yuzey": {
+            "ilk": 11.97,
+            "ek": 2.99
+        },
+        "ucak": {
+            "ilk": 12.65,
+            "ek": 3.67
+        }
+    },
+    "KAZAKİSTAN": {
+        "yuzey": {
+            "ilk": 24.29,
+            "ek": 7.17
+        },
+        "ucak": {
+            "ilk": 26.72,
+            "ek": 9.61
+        }
+    },
+    "KENYA": {
+        "yuzey": {
+            "ilk": 15.54,
+            "ek": 5.63
+        },
+        "ucak": {
+            "ilk": 16.24,
+            "ek": 6.32
+        }
+    },
+    "KIBRIS RUM KESİMİ": {
+        "yuzey": {
+            "ilk": 19.82,
+            "ek": 5.68
+        },
+        "ucak": {
+            "ilk": 19.87,
+            "ek": 5.73
+        }
+    },
+    "KIRGIZİSTAN": {
+        "yuzey": {
+            "ilk": 6.83,
+            "ek": 3.96
+        },
+        "ucak": {
+            "ilk": 7.4,
+            "ek": 4.52
+        }
+    },
+    "KİRİBATİ": {
+        "yuzey": {
+            "ilk": 21.35,
+            "ek": 12.48
+        },
+        "ucak": null
+    },
+    "KOLOMBİYA": {
+        "yuzey": {
+            "ilk": 20.77,
+            "ek": 6.61
+        },
+        "ucak": {
+            "ilk": 24.31,
+            "ek": 11.73
+        }
+    },
+    "KOMORLAR BİRLİĞİ": {
+        "yuzey": {
+            "ilk": 26.25,
+            "ek": 10.66
+        },
+        "ucak": null
+    },
+    "KONGO CUMHURİYETİ": {
+        "yuzey": {
+            "ilk": 24.36,
+            "ek": 9.08
+        },
+        "ucak": null
+    },
+    "KONGO DEMOKRATİK CUMHURİYETİ": {
+        "yuzey": {
+            "ilk": 27.95,
+            "ek": 9.38
+        },
+        "ucak": null
+    },
+    "KOSOVA": {
+        "yuzey": {
+            "ilk": 13.11,
+            "ek": 1.82
+        },
+        "ucak": {
+            "ilk": 13.28,
+            "ek": 2.01
+        }
+    },
+    "KOSTA RİKA": {
+        "yuzey": {
+            "ilk": 21.54,
+            "ek": 7.97
+        },
+        "ucak": null
+    },
+    "KUVEYT": {
+        "yuzey": {
+            "ilk": 11.39,
+            "ek": 2.87
+        },
+        "ucak": {
+            "ilk": 13.45,
+            "ek": 4.93
+        }
+    },
+    "KUZEY KIBRIS TÜRK CUMHURİYETİ": {
+        "yuzey": {
+            "ilk": 4.71,
+            "ek": 0.78
+        },
+        "ucak": {
+            "ilk": 4.71,
+            "ek": 1.39
+        }
+    },
+    "KUZEY KORE(KORE DEMOKRATİK HALK CUMHURİYETİ)": {
+        "yuzey": {
+            "ilk": 21.62,
+            "ek": 10.42
+        },
+        "ucak": null
+    },
+    "KÜBA": {
+        "yuzey": {
+            "ilk": 24.57,
+            "ek": 9.78
+        },
+        "ucak": {
+            "ilk": 26.45,
+            "ek": 11.66
+        }
+    },
+    "LAOS": {
+        "yuzey": {
+            "ilk": 29.41,
+            "ek": 12.84
+        },
+        "ucak": null
+    },
+    "LESOTHO": {
+        "yuzey": {
+            "ilk": 20.91,
+            "ek": 10.01
+        },
+        "ucak": null
+    },
+    "LETONYA": {
+        "yuzey": {
+            "ilk": 12.1,
+            "ek": 3.55
+        },
+        "ucak": {
+            "ilk": 15.06,
+            "ek": 6.51
+        }
+    },
+    "LİBERYA": {
+        "yuzey": {
+            "ilk": 23.36,
+            "ek": 8.08
+        },
+        "ucak": null
+    },
+    "LİBYA": {
+        "yuzey": {
+            "ilk": 11.82,
+            "ek": 2.7
+        },
+        "ucak": {
+            "ilk": 12.55,
+            "ek": 3.43
+        }
+    },
+    "LİHTENŞTAYN": {
+        "yuzey": {
+            "ilk": 15.56,
+            "ek": 3.06
+        },
+        "ucak": {
+            "ilk": 17.14,
+            "ek": 4.64
+        }
+    },
+    "LİTVANYA": {
+        "yuzey": {
+            "ilk": 15.61,
+            "ek": 2.74
+        },
+        "ucak": {
+            "ilk": 18.73,
+            "ek": 5.87
+        }
+    },
+    "LÜBNAN": {
+        "yuzey": {
+            "ilk": 12.1,
+            "ek": 2.28
+        },
+        "ucak": {
+            "ilk": 12.19,
+            "ek": 2.36
+        }
+    },
+    "LÜKSEMBURG": {
+        "yuzey": {
+            "ilk": 23.95,
+            "ek": 3.06
+        },
+        "ucak": {
+            "ilk": 16.61,
+            "ek": 3.71
+        }
+    },
+    "MACARİSTAN": {
+        "yuzey": {
+            "ilk": 17.82,
+            "ek": 2.92
+        },
+        "ucak": {
+            "ilk": 18.07,
+            "ek": 3.18
+        }
+    },
+    "MADAGASKAR": {
+        "yuzey": {
+            "ilk": 21.17,
+            "ek": 8.06
+        },
+        "ucak": {
+            "ilk": 21.68,
+            "ek": 8.59
+        }
+    },
+    "MAKAO": {
+        "yuzey": {
+            "ilk": 23.48,
+            "ek": 8.65
+        },
+        "ucak": null
+    },
+    "MAKEDONYA": {
+        "yuzey": {
+            "ilk": 12.6,
+            "ek": 1.82
+        },
+        "ucak": {
+            "ilk": 12.77,
+            "ek": 2.01
+        }
+    },
+    "MALAVİ": {
+        "yuzey": {
+            "ilk": 30.07,
+            "ek": 11.24
+        },
+        "ucak": null
+    },
+    "MALDİVLER": {
+        "yuzey": {
+            "ilk": 14.84,
+            "ek": 5.63
+        },
+        "ucak": {
+            "ilk": 15.37,
+            "ek": 6.14
+        }
+    },
+    "MALEZYA": {
+        "yuzey": {
+            "ilk": 14.59,
+            "ek": 3.91
+        },
+        "ucak": {
+            "ilk": 17.34,
+            "ek": 6.68
+        }
+    },
+    "MALİ": {
+        "yuzey": {
+            "ilk": 25.02,
+            "ek": 7.87
+        },
+        "ucak": null
+    },
+    "MALTA": {
+        "yuzey": {
+            "ilk": 15.66,
+            "ek": 3.47
+        },
+        "ucak": {
+            "ilk": 20.35,
+            "ek": 8.16
+        }
+    },
+    "MAN ADASI": {
+        "yuzey": {
+            "ilk": 15.47,
+            "ek": 4.74
+        },
+        "ucak": null
+    },
+    "MARSHALL ADALARI": {
+        "yuzey": {
+            "ilk": 18.58,
+            "ek": 8.7
+        },
+        "ucak": null
+    },
+    "MARTİNİK": {
+        "yuzey": {
+            "ilk": 31.62,
+            "ek": 10.44
+        },
+        "ucak": null
+    },
+    "MAYOTTE": {
+        "yuzey": {
+            "ilk": 32.96,
+            "ek": 11.78
+        },
+        "ucak": null
+    },
+    "MEKSİKA": {
+        "yuzey": {
+            "ilk": 17.14,
+            "ek": 8.18
+        },
+        "ucak": {
+            "ilk": 19.6,
+            "ek": 10.64
+        }
+    },
+    "MISIR": {
+        "yuzey": {
+            "ilk": 13.28,
+            "ek": 4.78
+        },
+        "ucak": {
+            "ilk": 13.74,
+            "ek": 5.24
+        }
+    },
+    "MOĞOLİSTAN": {
+        "yuzey": {
+            "ilk": 18.79,
+            "ek": 6.78
+        },
+        "ucak": {
+            "ilk": 19.47,
+            "ek": 7.46
+        }
+    },
+    "MOLDOVA": {
+        "yuzey": {
+            "ilk": 14.88,
+            "ek": 2.53
+        },
+        "ucak": {
+            "ilk": 15.56,
+            "ek": 3.21
+        }
+    },
+    "MONAKO": {
+        "yuzey": {
+            "ilk": 18.94,
+            "ek": 2.98
+        },
+        "ucak": {
+            "ilk": 20.32,
+            "ek": 4.37
+        }
+    },
+    "MONTSERRAT": {
+        "yuzey": {
+            "ilk": 18.79,
+            "ek": 9.96
+        },
+        "ucak": null
+    },
+    "MORİTANYA": {
+        "yuzey": {
+            "ilk": 26.69,
+            "ek": 7.67
+        },
+        "ucak": null
+    },
+    "MORİTYUS": {
+        "yuzey": {
+            "ilk": 29.92,
+            "ek": 12.56
+        },
+        "ucak": null
+    },
+    "MOZAMBİK": {
+        "yuzey": {
+            "ilk": 24.23,
+            "ek": 9.95
+        },
+        "ucak": {
+            "ilk": 19.36,
+            "ek": 6.68
+        }
+    },
+    "MYANMAR": {
+        "yuzey": {
+            "ilk": 27.47,
+            "ek": 11.53
+        },
+        "ucak": null
+    },
+    "NAMİBYA": {
+        "yuzey": {
+            "ilk": 21.54,
+            "ek": 10.78
+        },
+        "ucak": null
+    },
+    "NAURU": {
+        "yuzey": {
+            "ilk": 20.21,
+            "ek": 12.39
+        },
+        "ucak": null
+    },
+    "NEPAL": {
+        "yuzey": {
+            "ilk": 15.84,
+            "ek": 6.95
+        },
+        "ucak": {
+            "ilk": 13.43,
+            "ek": 6.12
+        }
+    },
+    "NİJER": {
+        "yuzey": {
+            "ilk": 21.2,
+            "ek": 9.13
+        },
+        "ucak": {
+            "ilk": 22.41,
+            "ek": 10.35
+        }
+    },
+    "NİJERYA": {
+        "yuzey": {
+            "ilk": 20.74,
+            "ek": 7.31
+        },
+        "ucak": {
+            "ilk": 21.78,
+            "ek": 8.35
+        }
+    },
+    "NİKARAGUA": {
+        "yuzey": {
+            "ilk": 25.14,
+            "ek": 12.14
+        },
+        "ucak": null
+    },
+    "NORVEÇ": {
+        "yuzey": {
+            "ilk": 25.76,
+            "ek": 4.76
+        },
+        "ucak": {
+            "ilk": 27.66,
+            "ek": 6.68
+        }
+    },
+    "ORTA AFRİKA CUMHURİYETİ": {
+        "yuzey": {
+            "ilk": 26.69,
+            "ek": 7.99
+        },
+        "ucak": null
+    },
+    "ÖZBEKİSTAN": {
+        "yuzey": {
+            "ilk": 15.05,
+            "ek": 4.61
+        },
+        "ucak": {
+            "ilk": 15.32,
+            "ek": 4.88
+        }
+    },
+    "PAKİSTAN": {
+        "yuzey": {
+            "ilk": 13.06,
+            "ek": 3.43
+        },
+        "ucak": {
+            "ilk": 15.16,
+            "ek": 5.54
+        }
+    },
+    "PALAU CUMHURİYETİ": {
+        "yuzey": {
+            "ilk": 18.58,
+            "ek": 8.7
+        },
+        "ucak": null
+    },
+    "PANAMA": {
+        "yuzey": {
+            "ilk": 27.35,
+            "ek": 12.38
+        },
+        "ucak": {
+            "ilk": 15.4,
+            "ek": 8.4
+        }
+    },
+    "PAPUA YENİ GİNE": {
+        "yuzey": {
+            "ilk": 28.65,
+            "ek": 12.85
+        },
+        "ucak": null
+    },
+    "PARAGUAY": {
+        "yuzey": {
+            "ilk": 28.68,
+            "ek": 14.26
+        },
+        "ucak": {
+            "ilk": 26.81,
+            "ek": 14.13
+        }
+    },
+    "PERU": {
+        "yuzey": {
+            "ilk": 19.86,
+            "ek": 7.46
+        },
+        "ucak": {
+            "ilk": 27.98,
+            "ek": 17.19
+        }
+    },
+    "PİTCAİRN ADALARI": {
+        "yuzey": {
+            "ilk": 41.77,
+            "ek": 26.93
+        },
+        "ucak": null
+    },
+    "POLONYA": {
+        "yuzey": {
+            "ilk": 18.55,
+            "ek": 3.52
+        },
+        "ucak": {
+            "ilk": 20.89,
+            "ek": 5.87
+        }
+    },
+    "PORTEKİZ": {
+        "yuzey": {
+            "ilk": 18.45,
+            "ek": 4.01
+        },
+        "ucak": {
+            "ilk": 20.59,
+            "ek": 6.15
+        }
+    },
+    "PORTO RİKO": {
+        "yuzey": {
+            "ilk": 18.58,
+            "ek": 8.7
+        },
+        "ucak": null
+    },
+    "REUNİON": {
+        "yuzey": {
+            "ilk": 34.29,
+            "ek": 13.12
+        },
+        "ucak": null
+    },
+    "ROMANYA": {
+        "yuzey": {
+            "ilk": 22.87,
+            "ek": 3.59
+        },
+        "ucak": {
+            "ilk": 23.04,
+            "ek": 3.76
+        }
+    },
+    "RUANDA": {
+        "yuzey": {
+            "ilk": 19.16,
+            "ek": 8.45
+        },
+        "ucak": {
+            "ilk": 15.4,
+            "ek": 6.27
+        }
+    },
+    "RUSYA FEDERASYONU": {
+        "yuzey": {
+            "ilk": 15.11,
+            "ek": 4.71
+        },
+        "ucak": {
+            "ilk": 15.96,
+            "ek": 5.54
+        }
+    },
+    "SAN MARİNO": {
+        "yuzey": {
+            "ilk": 16.32,
+            "ek": 3.2
+        },
+        "ucak": null
+    },
+    "SAO TOME VE PRİNCİPE": {
+        "yuzey": {
+            "ilk": 23.24,
+            "ek": 8.43
+        },
+        "ucak": null
+    },
+    "SENEGAL": {
+        "yuzey": {
+            "ilk": 17.8,
+            "ek": 9.18
+        },
+        "ucak": {
+            "ilk": 18.24,
+            "ek": 9.62
+        }
+    },
+    "SEYŞELLER": {
+        "yuzey": {
+            "ilk": 17.82,
+            "ek": 9.2
+        },
+        "ucak": null
+    },
+    "SIRBİSTAN": {
+        "yuzey": {
+            "ilk": 14.96,
+            "ek": 2.24
+        },
+        "ucak": {
+            "ilk": 15.06,
+            "ek": 2.35
+        }
+    },
+    "SİERA LEONE": {
+        "yuzey": {
+            "ilk": 24.19,
+            "ek": 8.04
+        },
+        "ucak": null
+    },
+    "SİNGAPUR": {
+        "yuzey": {
+            "ilk": 16.08,
+            "ek": 4.95
+        },
+        "ucak": {
+            "ilk": 19.53,
+            "ek": 8.4
+        }
+    },
+    "SLOVAKYA": {
+        "yuzey": {
+            "ilk": 15.16,
+            "ek": 4.73
+        },
+        "ucak": {
+            "ilk": 15.88,
+            "ek": 5.44
+        }
+    },
+    "SLOVENYA": {
+        "yuzey": {
+            "ilk": 12.14,
+            "ek": 2.13
+        },
+        "ucak": {
+            "ilk": 12.41,
+            "ek": 2.38
+        }
+    },
+    "SOLOMON ADALARI": {
+        "yuzey": {
+            "ilk": 18.85,
+            "ek": 11.03
+        },
+        "ucak": null
+    },
+    "SOMALİ": {
+        "yuzey": {
+            "ilk": 12.14,
+            "ek": 6.34
+        },
+        "ucak": {
+            "ilk": 12.84,
+            "ek": 7.04
+        }
+    },
+    "SRİ LANKA": {
+        "yuzey": {
+            "ilk": 13.06,
+            "ek": 4.11
+        },
+        "ucak": {
+            "ilk": 13.8,
+            "ek": 4.86
+        }
+    },
+    "ST HELENA": {
+        "yuzey": {
+            "ilk": 23.58,
+            "ek": 15.16
+        },
+        "ucak": null
+    },
+    "ST KİTTS VE NEVİS": {
+        "yuzey": {
+            "ilk": 22.64,
+            "ek": 8.89
+        },
+        "ucak": null
+    },
+    "ST LUCİA": {
+        "yuzey": {
+            "ilk": 24.48,
+            "ek": 10.25
+        },
+        "ucak": null
+    },
+    "ST MAARTEN": {
+        "yuzey": {
+            "ilk": 21.52,
+            "ek": 9.89
+        },
+        "ucak": null
+    },
+    "ST PİERRE VE MİQUELON": {
+        "yuzey": {
+            "ilk": 34.0,
+            "ek": 12.82
+        },
+        "ucak": null
+    },
+    "ST VİNCENT VE GRENADİNLER": {
+        "yuzey": {
+            "ilk": 27.9,
+            "ek": 11.92
+        },
+        "ucak": null
+    },
+    "SUDAN": {
+        "yuzey": {
+            "ilk": 13.24,
+            "ek": 4.11
+        },
+        "ucak": {
+            "ilk": 13.36,
+            "ek": 4.23
+        }
+    },
+    "SURİNAM": {
+        "yuzey": {
+            "ilk": 26.25,
+            "ek": 10.91
+        },
+        "ucak": null
+    },
+    "SURİYE": {
+        "yuzey": {
+            "ilk": 9.89,
+            "ek": 2.53
+        },
+        "ucak": null
+    },
+    "SUUDİ ARABİSTAN": {
+        "yuzey": null,
+        "ucak": {
+            "ilk": 12.33,
+            "ek": 4.98
+        }
+    },
+    "ŞİLİ": {
+        "yuzey": {
+            "ilk": 27.22,
+            "ek": 11.08
+        },
+        "ucak": {
+            "ilk": 34.09,
+            "ek": 19.55
+        }
+    },
+    "TACİKİSTAN": {
+        "yuzey": {
+            "ilk": 12.85,
+            "ek": 4.83
+        },
+        "ucak": {
+            "ilk": 13.12,
+            "ek": 5.08
+        }
+    },
+    "TANZANYA": {
+        "yuzey": {
+            "ilk": 19.64,
+            "ek": 9.21
+        },
+        "ucak": {
+            "ilk": 14.99,
+            "ek": 6.17
+        }
+    },
+    "TAYLAND": {
+        "yuzey": {
+            "ilk": 14.86,
+            "ek": 4.83
+        },
+        "ucak": {
+            "ilk": 16.97,
+            "ek": 6.92
+        }
+    },
+    "TAYVAN": {
+        "yuzey": {
+            "ilk": 16.03,
+            "ek": 5.36
+        },
+        "ucak": {
+            "ilk": 16.56,
+            "ek": 5.9
+        }
+    },
+    "TOGO": {
+        "yuzey": {
+            "ilk": 25.23,
+            "ek": 7.89
+        },
+        "ucak": null
+    },
+    "TONGA": {
+        "yuzey": {
+            "ilk": 21.61,
+            "ek": 12.05
+        },
+        "ucak": null
+    },
+    "TRISTAN DA CUNHA": {
+        "yuzey": {
+            "ilk": 22.53,
+            "ek": 15.25
+        },
+        "ucak": null
+    },
+    "TRİNİDAD VE TOBAGO": {
+        "yuzey": {
+            "ilk": 25.98,
+            "ek": 10.9
+        },
+        "ucak": null
+    },
+    "TUNUS": {
+        "yuzey": {
+            "ilk": 18.09,
+            "ek": 4.68
+        },
+        "ucak": {
+            "ilk": 20.49,
+            "ek": 7.4
+        }
+    },
+    "TURCS VE CAİCOS ADALARI": {
+        "yuzey": {
+            "ilk": 16.64,
+            "ek": 9.28
+        },
+        "ucak": null
+    },
+    "TUVALU": {
+        "yuzey": {
+            "ilk": 33.25,
+            "ek": 24.68
+        },
+        "ucak": null
+    },
+    "TÜRKMENİSTAN": {
+        "yuzey": {
+            "ilk": 7.41,
+            "ek": 3.57
+        },
+        "ucak": {
+            "ilk": 7.75,
+            "ek": 3.91
+        }
+    },
+    "UGANDA": {
+        "yuzey": {
+            "ilk": 26.81,
+            "ek": 9.16
+        },
+        "ucak": null
+    },
+    "UKRAYNA": {
+        "yuzey": {
+            "ilk": 22.64,
+            "ek": 4.69
+        },
+        "ucak": {
+            "ilk": 22.81,
+            "ek": 4.86
+        }
+    },
+    "UMMAN": {
+        "yuzey": {
+            "ilk": 15.01,
+            "ek": 4.61
+        },
+        "ucak": {
+            "ilk": 16.24,
+            "ek": 5.83
+        }
+    },
+    "URUGUAY": {
+        "yuzey": {
+            "ilk": 25.59,
+            "ek": 10.44
+        },
+        "ucak": {
+            "ilk": 27.47,
+            "ek": 13.91
+        }
+    },
+    "ÜRDÜN": {
+        "yuzey": {
+            "ilk": 11.99,
+            "ek": 2.28
+        },
+        "ucak": {
+            "ilk": 14.14,
+            "ek": 4.62
+        }
+    },
+    "VANUATU": {
+        "yuzey": {
+            "ilk": 21.39,
+            "ek": 13.43
+        },
+        "ucak": null
+    },
+    "VATİKAN": {
+        "yuzey": {
+            "ilk": 18.43,
+            "ek": 3.18
+        },
+        "ucak": {
+            "ilk": 19.98,
+            "ek": 4.73
+        }
+    },
+    "VENEZUELA": {
+        "yuzey": {
+            "ilk": 18.55,
+            "ek": 11.12
+        },
+        "ucak": {
+            "ilk": 18.73,
+            "ek": 11.31
+        }
+    },
+    "VİETNAM": {
+        "yuzey": {
+            "ilk": 13.09,
+            "ek": 5.73
+        },
+        "ucak": {
+            "ilk": 15.16,
+            "ek": 7.82
+        }
+    },
+    "VİRGİN ADALARI (AMERİKAN)": {
+        "yuzey": {
+            "ilk": 18.58,
+            "ek": 8.7
+        },
+        "ucak": null
+    },
+    "VİRGİN ADALARI (İNGİLİZ)": {
+        "yuzey": {
+            "ilk": 21.23,
+            "ek": 10.06
+        },
+        "ucak": null
+    },
+    "WALLİS VE FUTUNA": {
+        "yuzey": {
+            "ilk": 39.36,
+            "ek": 23.38
+        },
+        "ucak": null
+    },
+    "YEMEN": {
+        "yuzey": {
+            "ilk": 11.65,
+            "ek": 4.71
+        },
+        "ucak": {
+            "ilk": 12.29,
+            "ek": 5.36
+        }
+    },
+    "YENİ KALEDONYA": {
+        "yuzey": {
+            "ilk": 29.27,
+            "ek": 10.39
+        },
+        "ucak": null
+    },
+    "YENİ ZELANDA": {
+        "yuzey": {
+            "ilk": 33.54,
+            "ek": 18.67
+        },
+        "ucak": {
+            "ilk": 35.05,
+            "ek": 20.18
+        }
+    },
+    "YEŞİL BURUN": {
+        "yuzey": {
+            "ilk": 26.21,
+            "ek": 8.08
+        },
+        "ucak": null
+    },
+    "YUNANİSTAN": {
+        "yuzey": {
+            "ilk": 14.35,
+            "ek": 3.03
+        },
+        "ucak": {
+            "ilk": 14.4,
+            "ek": 3.08
+        }
+    },
+    "ZAMBİYA": {
+        "yuzey": {
+            "ilk": 20.5,
+            "ek": 10.9
+        },
+        "ucak": null
+    },
+    "ZİMBABVE": {
+        "yuzey": {
+            "ilk": 24.28,
+            "ek": 11.51
+        },
+        "ucak": null
+    }
+}
