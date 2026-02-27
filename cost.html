@@ -138,22 +138,15 @@
             }
         };
 
-        const modelConfig = { standart: { price: 9000, weight: 10 }, aparatli: { price: 10500, weight: 11 } };
+        const modelConfig = { standart: { price: 9000, weight: 11 }, aparatli: { price: 10500, weight: 13 } };
         
         let ulkeFiyatlariDinamic = {};
+        let countryTranslationsEN = {}; // Artık kodun içi temiz, JSON'dan dolacak
         window.currentRates = null;
 
-        // Ülke isimlerini düzgün harf formatına çevirme (Örn: ALMANYA -> Almanya)
-        function toTitleCase(str) {
-            return str.replace(/\w\S*/g, function(txt){
-                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-            }).replace('Ve', 've');
-        }
-
-        // Kurları Çek
         async function getExchangeRates() {
             try {
-                const response = await fetch('/api/rates'); // Senin mevcut kur API'n
+                const response = await fetch('/api/rates');
                 const rates = await response.json();
                 if (!rates.SDR) rates.SDR = 60.31; 
                 return rates;
@@ -162,14 +155,18 @@
             }
         }
 
-        // PTT JSON Verisini Çek
-        async function getPTTData() {
+        // Sadece PTT Datasını Değil, İngilizce Dosyasını da Fetch'leyen Yapı
+        async function getCountryData() {
             try {
-                const response = await fetch('ulkeFiyatlari.json'); // Python'un ürettiği dosya
-                ulkeFiyatlariDinamic = await response.json();
-                populateDropdown('tr'); // Veri gelince dropdown'u doldur
+                // Hem Fiyatları hem de İngilizce Çevirileri Paralel Olarak Yükle
+                const [priceRes, transRes] = await Promise.all([
+                    fetch('ulkeFiyatlari.json'),
+                    fetch('countryTranslations.json')
+                ]);
+                ulkeFiyatlariDinamic = await priceRes.json();
+                countryTranslationsEN = await transRes.json();
             } catch (error) {
-                console.error("PTT fiyatları yüklenemedi", error);
+                console.error("Veri dosyaları yüklenemedi", error);
                 document.getElementById('ulke').innerHTML = `<option value="">⚠️ Veri Yüklenemedi</option>`;
             }
         }
@@ -183,8 +180,15 @@
             ulkeListesi.forEach(ulkeKod => {
                 const opt = document.createElement('option');
                 opt.value = ulkeKod;
-                // JSON'daki büyük harfli ismi görsel olarak düzelt
-                opt.textContent = toTitleCase(ulkeKod);
+                
+                let displayKisim = ulkeKod.toLocaleUpperCase('tr-TR'); 
+
+                // Eğer dil EN ise ve eşleşme varsa çeviriyi kullan
+                if (lang === 'en' && countryTranslationsEN[displayKisim]) {
+                    displayKisim = countryTranslationsEN[displayKisim];
+                }
+
+                opt.textContent = displayKisim;
                 select.appendChild(opt);
             });
             select.value = currentVal;
@@ -206,12 +210,15 @@
         document.getElementById('tr-btn').onclick = () => changeLanguage('tr');
         document.getElementById('en-btn').onclick = () => changeLanguage('en');
 
+        // Sayfa Yüklendiğinde 3 Kaynağı (Kurlar, Fiyatlar, Çeviriler) Getir
         window.onload = async () => {
-            changeLanguage('tr');
+            const [rates] = await Promise.all([
+                getExchangeRates(), 
+                getCountryData()
+            ]);
             
-            // Kurları ve PTT verilerini eşzamanlı çek
-            const [rates, _] = await Promise.all([getExchangeRates(), getPTTData()]);
             window.currentRates = rates;
+            changeLanguage('tr'); // Veriler indikten sonra ekranı doldur
             
             document.getElementById('rates-display').innerHTML = `
                 📅 ${rates.Tarih} <br>
@@ -224,6 +231,7 @@
         const roundTL = (n) => Math.ceil(n / 10) * 10;
         const roundCUR = (n) => Math.ceil(n);
 
+        // Hesaplama Bloğu
         document.getElementById('hesapla').onclick = async function() {
             const ulkeKod = document.getElementById('ulke').value;
             const model = modelConfig[document.getElementById('model').value];
@@ -236,7 +244,6 @@
             const rates = window.currentRates;
             const countryData = ulkeFiyatlariDinamic[ulkeKod];
 
-            // --- YÜZEY VE UÇAK KARŞILAŞTIRMA MANTIĞI ---
             let selectedShipping = null;
             let typeMarker = "";
 
@@ -254,7 +261,6 @@
                 return;
             }
 
-            // Hesaplama: SDR İlk + (Kalan KG * SDR Ek) + 200 TL Pay
             const sdrToplam = selectedShipping.ilk + ((model.weight - 1) * selectedShipping.ek);
             const tlKargo = roundTL(sdrToplam * rates.SDR);
             const eurKargo = roundCUR(tlKargo / rates.EUR);
@@ -264,7 +270,6 @@
             const urunEUR = roundCUR(urunTL / rates.EUR);
             const urunUSD = roundCUR(urunTL / rates.USD);
 
-            // Başlığa U/Y Ekleme
             const isTr = document.getElementById('tr-btn').classList.contains('active');
             document.getElementById('sonuc-title').innerHTML = `${isTr ? "Kargo Ücreti" : "Shipping Price"} <span class="shipping-type">${typeMarker}</span>`;
 
@@ -286,4 +291,5 @@
     </script>
 </body>
 </html>
+
 
