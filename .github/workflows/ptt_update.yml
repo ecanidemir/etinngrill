@@ -1,0 +1,36 @@
+name: PTT Fiyat Güncelleyici
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # Her Pazartesi gece yarısı çalışır
+  workflow_dispatch: # İstediğin zaman manuel çalıştırman için buton ekler
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Robotun dosyayı güncelleyebilmesi için izin
+      
+    steps:
+      - name: Depoyu Klonla
+        uses: actions/checkout@v3
+
+      - name: Python Kurulumu
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Gerekli Kütüphaneleri Yükle
+        run: pip install requests beautifulsoup4 pdfplumber urllib3
+
+      - name: PTT Verilerini Çek (Parser'ı Çalıştır)
+        run: python ptt_parser.py
+
+      - name: Değişiklikleri GitHub'a Kaydet (Commit)
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add ulkeFiyatlari.json
+          # Eğer değişiklik yoksa hata vermemesi için || echo kullanıyoruz
+          git commit -m "🤖 Otomatik Güncelleme: PTT Fiyatları güncellendi" || echo "Değişiklik yok, commit atlandı."
+          git push
