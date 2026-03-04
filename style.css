@@ -347,10 +347,50 @@ section {
     margin-bottom: 1.25rem;
 }
 
+.hero-text h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 2rem 0 0.75rem;
+    color: var(--clr-primary);
+}
+
 .hero-text p {
     font-size: 1.05rem;
     margin-bottom: .75rem;
     max-width: 580px;
+}
+
+.hero-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    max-width: 580px;
+}
+
+.hero-features li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.hero-features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--clr-primary);
+}
+
+.hero-cta-text {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    color: var(--clr-primary);
 }
 
 .hero-text .btn {
@@ -383,7 +423,8 @@ section {
 
 .video-vertical {
     position: relative;
-    padding-bottom: 133.33%; /* 3:4 aspect ratio (4x3 vertical) */
+    padding-bottom: 133.33%;
+    /* 3:4 aspect ratio (4x3 vertical) */
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -416,6 +457,11 @@ section {
 
     .hero-text h1 {
         font-size: 2rem;
+    }
+
+    .hero-text h3 {
+        font-size: 1.25rem;
+        margin-top: 1.5rem;
     }
 }
 
@@ -886,6 +932,17 @@ html[dir="rtl"] .lang-option {
 html[dir="rtl"] .feature-list li {
     flex-direction: row-reverse;
     text-align: right;
+}
+
+html[dir="rtl"] .hero-features li {
+    padding-left: 0;
+    padding-right: 1.5rem;
+    text-align: right;
+}
+
+html[dir="rtl"] .hero-features li::before {
+    left: auto;
+    right: 0;
 }
 
 html[dir="rtl"] .contact-info {
