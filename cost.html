@@ -50,7 +50,7 @@
     </div>
 
     <div class="form-container">
-        <h1 id="page-title">Türkiye Dışı Kargo Ücretleri</h1>
+        <h1 id="page-title">Türkiye Dışı Kargo Ücretleri (KDV Hariç)</h1>
         
         <div class="form-group">
             <label for="model" id="model-label">Model Seçin:</label>
@@ -117,7 +117,7 @@
     <script>
         const translations = {
             tr: {
-                "page-title": "Türkiye Dışı Kargo Ücretleri", "model-label": "Ürün Seçin:", "country-label": "Ülke Seçin:",
+                "page-title": ">Türkiye Dışı Kargo Ücretleri (KDV Hariç)", "model-label": "Ürün Seçin:", "country-label": "Ülke Seçin:",
                 "hesapla": "Hesapla", "calculating-text": "Hesaplanıyor...", "tl-title": "Türk Lirası (TL)", "eur-title": "Euro (EUR)",
                 "usd-title": "ABD Doları (USD)", "bank-info-title": "Banka Hesap Bilgileri", "bank-label": "Banka",
                 "swift-label": "Swift", "account-name-label": "Hesap Adı", "try-iban-label": "TRY IBAN", "usd-iban-label": "USD IBAN",
@@ -127,7 +127,7 @@
                 "total-tl-title": "Türk Lirası (TL)", "total-eur-title": "Euro (EUR)", "total-usd-title": "ABD Doları (USD)"
             },
             en: {
-                "page-title": "International Shipping Costs", "model-label": "Choose Product:", "country-label": "Select Country:",
+                "page-title": "International Shipping Costs (Without TAX)", "model-label": "Choose Product:", "country-label": "Select Country:",
                 "hesapla": "Calculate", "calculating-text": "Calculating...", "tl-title": "Turkish Lira (TL)", "eur-title": "Euro (EUR)",
                 "usd-title": "US Dollar (USD)", "bank-info-title": "Bank Account Information", "bank-label": "Bank",
                 "swift-label": "Swift", "account-name-label": "Account Name", "try-iban-label": "TRY IBAN", "usd-iban-label": "USD IBAN",
@@ -138,7 +138,7 @@
             }
         };
 
-        const modelConfig = { standart: { price: 9000, weight: 11 }, aparatli: { price: 10500, weight: 13 } };
+        const modelConfig = { standart: { price: 7750, weight: 11 }, aparatli: { price: 9000, weight: 13 } };
         
         let ulkeFiyatlariDinamic = {};
         let countryTranslationsEN = {};
